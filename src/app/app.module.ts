@@ -19,9 +19,10 @@ import { MatFormFieldModule,
           MatTabsModule} from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, ToolbarComponent
+    AppComponent,LoginComponent, ToolbarComponent, FooterComponent
   ],
   imports: [
     BrowserModule,
