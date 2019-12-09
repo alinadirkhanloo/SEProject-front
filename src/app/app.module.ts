@@ -20,9 +20,12 @@ import { MatFormFieldModule,
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { AdvertiseComponent } from './advertise/advertise.component';
+import { BannersComponent } from './banners/banners.component';
+import { BannerPanelComponent } from './banner-panel/banner-panel.component';
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, ToolbarComponent, FooterComponent
+    AppComponent,LoginComponent, ToolbarComponent, FooterComponent, AdvertiseComponent, BannersComponent, BannerPanelComponent
   ],
   imports: [
     BrowserModule,
