@@ -23,9 +23,10 @@ import { FooterComponent } from './footer/footer.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
 import { BannersComponent } from './banners/banners.component';
 import { BannerPanelComponent } from './banner-panel/banner-panel.component';
+import { EditorComponent } from './editor/editor.component';
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, ToolbarComponent, FooterComponent, AdvertiseComponent, BannersComponent, BannerPanelComponent
+    AppComponent,LoginComponent, ToolbarComponent, FooterComponent, AdvertiseComponent, BannersComponent, BannerPanelComponent, EditorComponent
   ],
   imports: [
     BrowserModule,
