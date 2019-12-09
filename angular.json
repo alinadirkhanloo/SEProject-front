@@ -31,7 +31,11 @@
               "src/styles.scss",
               "src/assets/css/w3css.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
           },
           "configurations": {
             "production": {

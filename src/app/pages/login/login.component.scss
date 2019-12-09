@@ -1,6 +1,11 @@
 .login-card{
-  margin: 15% 35%;
-  min-width: 30%;
+  margin: 10% 30%;
+  min-width: 35%;
+  direction: rtl;
+  background: #fff;
+  }
+  .mat-form-field{
+    text-align: right!important;
   }
 .example-full-width{
   width: 280px;
@@ -8,4 +13,21 @@
 }
 .mat-card-header{
   display: block;
+}
+
+.mat-card-actions{
+  button{
+    width: 40%;
+  }
+}
+
+::ng-deep .mat-tab-body{
+  height: 50vh;
+  padding-top:60px;
+  table{
+    margin: 45px auto!important;
+  }
+}
+::ng-deep .mat-tab-label{
+  min-width: 50%!important;
 }

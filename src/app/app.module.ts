@@ -15,7 +15,8 @@ import { MatFormFieldModule,
         MatTableModule,
         MatMenuModule,
          MatIconModule,
-          MatProgressSpinnerModule } from '@angular/material';
+          MatProgressSpinnerModule,
+          MatTabsModule} from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FormsModule } from '@angular/forms';
 @NgModule({
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
     MatMenuModule,
     MatIconModule,
+    MatTabsModule,
     MatProgressSpinnerModule,
     FormsModule
   ],

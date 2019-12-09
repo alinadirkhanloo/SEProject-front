@@ -1,28 +1,100 @@
+<div class="login">
+  <!--<mat-card class="login-card w3-center">
+    <mat-card-header class="w3-margin">
+      <mat-card-title>بیا شروع کنیم!</mat-card-title>
+    </mat-card-header>
 
-<mat-card class="login-card w3-center">
-   <mat-card-header class="w3-margin">
-     <mat-card-title >Login</mat-card-title>
-   </mat-card-header>
-   <mat-card-content>
-     <form class="example-form">
-       <table class="example-full-width" cellspacing="0">
-         <tr>
-           <td>
-             <mat-form-field class="example-full-width">
-             <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-             </mat-form-field>
-           </td>
-         </tr>
-         <tr>
-         <td>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-            </mat-form-field></td>
-       </tr></table>
-     </form>
-     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-   </mat-card-content>
-   <mat-card-actions class="w3-margin">
-     <button mat-raised-button (click)="login()" color="primary">Login</button>
-   </mat-card-actions>
- </mat-card>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="ایمیل" [(ngModel)]="email" name="email" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+          <td>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
+              </mat-form-field></td>
+        </tr></table>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+
+    <mat-card-actions class="w3-margin">
+      <button mat-raised-button (click)="login()" color="primary">ورود</button>
+    </mat-card-actions>
+  </mat-card>-->
+  <mat-tab-group class="login-card w3-center">
+    <mat-tab label="ورود">
+      <mat-card-header class="w3-margin">
+        <mat-card-title>وارد شوید!</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form class="example-form">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="ایمیل" [(ngModel)]="email" name="email" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
+                </mat-form-field></td>
+          </tr></table>
+        </form>
+        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </mat-card-content>
+
+      <mat-card-actions class="w3-margin">
+        <button mat-raised-button (click)="login()" color="primary">ورود</button>
+      </mat-card-actions>
+    </mat-tab>
+    <mat-tab label="ثبت نام">
+      <mat-card-header class="w3-margin">
+        <mat-card-title>بیا شروع کنیم!</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form class="example-form">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                <input matInput placeholder="ایمیل" [(ngModel)]="email" name="email" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+      </mat-card-content>
+
+      <mat-card-actions class="w3-margin">
+        <button mat-raised-button (click)="login()" color="primary">ورود</button>
+      </mat-card-actions>
+    </mat-tab>
+  </mat-tab-group>
+</div>
