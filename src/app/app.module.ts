@@ -17,19 +17,19 @@ import { MatFormFieldModule,
         MatMenuModule,
          MatIconModule,
           MatProgressSpinnerModule,
-          MatTabsModule} from '@angular/material';
+          MatTabsModule,
+          MatPaginatorModule} from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { BannersComponent } from './banners/banners.component';
 import { BannerPanelComponent } from './banner-panel/banner-panel.component';
 import { EditorComponent } from './editor/editor.component';
-import { NgxEditorModule } from 'ngx-editor';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CategoryComponent } from './pages/category/category.component';
-
+import { HomeComponent } from './pages/home/home.component';
 @NgModule({
   declarations: [AppComponent,
     LoginComponent,
@@ -38,7 +38,7 @@ import { CategoryComponent } from './pages/category/category.component';
        BannersComponent,
         BannerPanelComponent,
          EditorComponent,
-         CategoryComponent
+         CategoryComponent,HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,7 @@ import { CategoryComponent } from './pages/category/category.component';
     MatIconModule,
     MatTabsModule,
     MatProgressSpinnerModule,
-    NgxEditorModule,
+    MatPaginatorModule,
     FormsModule,
     BsDatepickerModule,
     HttpClientModule,

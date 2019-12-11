@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { EditorComponent } from './editor/editor.component';
 import { CategoryComponent } from './pages/category/category.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 const routes: Routes = [
 
 {path:'login',component:LoginComponent},
 {path:'editor',component:EditorComponent},
-{path:'category',component:CategoryComponent}
+{path:'category',component:CategoryComponent},
+{path:'home',component:HomeComponent}
 ];
 
 @NgModule({
