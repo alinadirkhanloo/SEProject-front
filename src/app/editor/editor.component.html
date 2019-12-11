@@ -1,2 +1,14 @@
-<!---->
-<app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor>
+<!--
+<app-ngx-editor dir="rtl" [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor>
+-->
+<div class="w3-container editor" dir="rtl">
+  <textarea class="w3-input w3-card title-textarea w3-xlarge w3-animate-left" [placeholder]="'عنوان را وارد نمایید...'" type="text"></textarea>
+  <textarea class="w3-input w3-margin-top w3-card title-textarea w3-xlarge w3-animate-right" [placeholder]="'خلاصه را وارد نمایید...'" type="text"></textarea>
+  <div class="w3-container w3-margin-top w3-card w3-animate-zoom">
+    <angular-editor [(ngModel)]="htmlContent"
+    [config]="editorConfig"></angular-editor>
+  </div>
+  <div class="w3-margin-top w3-animate-bottom">
+    <button mat-raised-button color="primary">منتشر کن</button>
+  </div>
+</div>

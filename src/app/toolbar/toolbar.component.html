@@ -4,21 +4,20 @@
     <a href="#">DevisionByZero</a>
     <div class="action-btns" dir="rtl">
       <button mat-button>صفحه اصلی</button>
-      <button mat-button>لیست دسته بندی محصولات</button>
+      <button mat-button>لیست دسته بندی موضوعات</button>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>آگهی</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span>ایجاد آگهی</span>
+        <button mat-menu-item [routerLink]="['editor']">
+
+          <span>ایجاد آگهی<i class="material-icons"></i></span>
         </button>
-        <button mat-menu-item>
-          <mat-icon>voicemail</mat-icon>
+        <button mat-menu-item [routerLink]="['category']" >
           <span>مشاهده همه آگهی ها</span>
         </button>
       </mat-menu>
-    <button mat-button>ورود</button>
+    <button mat-button [routerLink]="['login']">ورود</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

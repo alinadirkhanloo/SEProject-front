@@ -27,6 +27,8 @@ import { EditorComponent } from './editor/editor.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CategoryComponent } from './pages/category/category.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -35,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
      FooterComponent,
        BannersComponent,
         BannerPanelComponent,
-         EditorComponent
+         EditorComponent,
+         CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgxEditorModule,
     FormsModule,
     BsDatepickerModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
