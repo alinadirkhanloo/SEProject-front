@@ -31,7 +31,7 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
               "src/assets/css/w3css.css",
-              "/node_modules/angular-material/angular-material.css"
+              "./node_modules/angular-material/angular-material.css"
             ],
             "scripts": []
           },

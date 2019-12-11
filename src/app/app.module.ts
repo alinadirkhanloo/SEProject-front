@@ -22,7 +22,7 @@ import { MatFormFieldModule,
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-import { BannersComponent } from './banners/banners.component';
+import { BannersComponent } from './pages/banners/banners.component';
 import { BannerPanelComponent } from './banner-panel/banner-panel.component';
 import { EditorComponent } from './editor/editor.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';

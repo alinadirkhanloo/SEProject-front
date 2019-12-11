@@ -1,9 +1,9 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <a href="#">DevisionByZero</a>
+    <a href="home">DevisionByZero</a>
     <div class="action-btns" dir="rtl">
-      <button mat-button>صفحه اصلی</button>
+      <button mat-button [routerLink]="['home']">صفحه اصلی</button>
       <button mat-button>لیست دسته بندی موضوعات</button>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>آگهی</mat-icon>
