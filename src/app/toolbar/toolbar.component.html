@@ -1,0 +1,24 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a href="#">DevisionByZero</a>
+    <div class="action-btns" dir="rtl">
+      <button mat-button>صفحه اصلی</button>
+      <button mat-button>لیست دسته بندی محصولات</button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>آگهی</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>ایجاد آگهی</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>voicemail</mat-icon>
+          <span>مشاهده همه آگهی ها</span>
+        </button>
+      </mat-menu>
+    <button mat-button>ورود</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
