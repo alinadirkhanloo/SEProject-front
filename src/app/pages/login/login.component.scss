@@ -1,11 +1,12 @@
 *{
   font-family: vazir;
 }
+
 .login-card{
-  margin: 10% 30%;
+  margin: 5% 30%;
   min-width: 35%;
   direction: rtl;
-  background: #fff;
+  z-index: 100;
   }
   .mat-form-field{
     text-align: right!important;
