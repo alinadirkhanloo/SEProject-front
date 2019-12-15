@@ -27,14 +27,14 @@
   }
 }
 
-::ng-deep .mat-tab-body{
+.login-card::ng-deep .mat-tab-body{
   height: 50vh;
   padding-top:24px;
   table{
     margin: 45px auto!important;
   }
 }
-::ng-deep .mat-tab-label{
+.login-card::ng-deep .mat-tab-label{
   min-width: 50%!important;
   font-size: 24px!important;
   height: 76px!important;

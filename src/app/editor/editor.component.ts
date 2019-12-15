@@ -15,8 +15,8 @@ export class EditorComponent{
       width: 'auto',
       minWidth: '0',
       translate: 'yes',
-      enableToolbar: false,
-      showToolbar: false,
+      enableToolbar: true,
+      showToolbar: true,
       placeholder: 'متن را وارد نمایید...',
       defaultParagraphSeparator: '',
       defaultFontName: '',
@@ -50,9 +50,4 @@ export class EditorComponent{
       ['fontSize']
     ]
 };
-
-
-
-
-
 }

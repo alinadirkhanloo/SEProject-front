@@ -44,7 +44,7 @@ import { MatFormFieldModule,
           MatBadgeModule,
           MatAutocompleteModule} from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { BannersComponent } from './pages/banners/banners.component';
 import { BannerPanelComponent } from './banner-panel/banner-panel.component';
@@ -59,6 +59,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NavComponent } from './nav/nav.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BannerEditorComponent } from './banner-editor/banner-editor.component';
 @NgModule({
   declarations: [AppComponent,
     LoginComponent,
@@ -67,7 +68,7 @@ import { ProfileComponent } from './profile/profile.component';
        BannersComponent,
         BannerPanelComponent,
          EditorComponent,
-         CategoryComponent,HomeComponent, NavComponent, ProfileComponent
+         CategoryComponent,HomeComponent, NavComponent, ProfileComponent, BannerEditorComponent
   ],
   imports: [
     BrowserModule,
