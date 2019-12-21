@@ -15,7 +15,7 @@ const routes: Routes = [
 {path:'login',component:LoginComponent},
 {path:'banner-panel',component:BannerPanelComponent},
 {path:'banners',component:BannersComponent},
-{path:'home',component:HomeComponent},
+{path:'',component:HomeComponent},
 {path:'category',component:CategoryComponent},
 {path:'profile',component:ProfileComponent},
 {path:'editor',component:EditorComponent},

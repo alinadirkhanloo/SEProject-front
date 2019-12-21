@@ -14,9 +14,7 @@
   margin: 5% 20%;
   background: #fff;
 }
-// .editor::ng-deep .angular-editor{
-//   font-family:
-// }
+
 .editor::ng-deep .angular-editor-textarea{
   min-height: 45vh!important;
   margin: 10px!important;
@@ -25,4 +23,7 @@
 
 .editor::ng-deep .angular-editor-toolbar{
   margin:10px!important;
+}
+.tag-chips ::ng-deep .mat-form-field{
+  display: block;
 }

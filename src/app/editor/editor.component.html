@@ -8,6 +8,34 @@
     <angular-editor [(ngModel)]="htmlContent"
     [config]="editorConfig"></angular-editor>
   </div>
+  <div class="tag-chips w3-panel w3-card">
+    <mat-form-field class="example-chip-list w3-margin-top w3-padding">
+      <mat-chip-list #chipList aria-label="Tag">
+        <mat-chip
+          *ngFor="let tag of tags"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(tag)">
+          {{tag}}
+          <span matChipRemove *ngIf="removable">X</span>
+        </mat-chip>
+        <input
+          placeholder="افزودن تگ..."
+          #tagInput
+          FormControl="tagCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+          {{tag}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
   <div class="w3-margin-top w3-animate-bottom">
     <button mat-raised-button color="primary">منتشر کن</button>
   </div>

@@ -11,7 +11,7 @@ import {map, startWith} from 'rxjs/operators';
   templateUrl: './banner-editor.component.html',
   styleUrls: ['./banner-editor.component.scss']
 })
-export class BannerEditorComponent implements OnInit {
+export class BannerEditorComponent {
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -64,7 +64,7 @@ export class BannerEditorComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   tags: string[] = [];
-  allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
@@ -75,8 +75,7 @@ export class BannerEditorComponent implements OnInit {
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
   }
 
-  ngOnInit() {
-  }
+
   add(event: MatChipInputEvent): void {
     // Add fruit only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
@@ -98,8 +97,8 @@ export class BannerEditorComponent implements OnInit {
     }
   }
 
-  remove(fruit: string): void {
-    const index = this.tags.indexOf(fruit);
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
       this.tags.splice(index, 1);
@@ -115,6 +114,6 @@ export class BannerEditorComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTags.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 }
