@@ -17,17 +17,49 @@ import { MatFormFieldModule,
         MatMenuModule,
          MatIconModule,
           MatProgressSpinnerModule,
-          MatTabsModule} from '@angular/material';
+          MatTabsModule,
+          MatPaginatorModule,
+          MatTreeModule,
+          MatTooltipModule,
+          MatSortModule,
+          MatSnackBarModule,
+          MatSlideToggleModule,
+          MatSliderModule,
+          MatSidenavModule,
+          MatSelectModule,
+          MatRippleModule,
+          MatRadioModule,
+          MatProgressBarModule,
+          MatNativeDateModule,
+          MatListModule,
+          MatGridListModule,
+          MatExpansionModule,
+          MatDividerModule,
+          MatDatepickerModule,
+          MatStepperModule,
+          MatChipsModule,
+          MatCheckboxModule,
+          MatButtonToggleModule,
+          MatBottomSheetModule,
+          MatBadgeModule,
+          MatAutocompleteModule} from '@angular/material';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-import { BannersComponent } from './banners/banners.component';
+import { BannersComponent } from './pages/banners/banners.component';
 import { BannerPanelComponent } from './banner-panel/banner-panel.component';
 import { EditorComponent } from './editor/editor.component';
-import { NgxEditorModule } from 'ngx-editor';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CategoryComponent } from './pages/category/category.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { PortalModule } from '@angular/cdk/portal';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NavComponent } from './nav/nav.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BannerEditorComponent } from './banner-editor/banner-editor.component';
 @NgModule({
   declarations: [AppComponent,
     LoginComponent,
@@ -35,28 +67,56 @@ import { HttpClientModule } from '@angular/common/http';
      FooterComponent,
        BannersComponent,
         BannerPanelComponent,
-         EditorComponent
+         EditorComponent,
+         CategoryComponent,HomeComponent, NavComponent, ProfileComponent, BannerEditorComponent
   ],
   imports: [
     BrowserModule,
+    AngularFontAwesomeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
     MatButtonModule,
-    MatToolbarModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
     MatDialogModule,
-    MatTableModule,
-    MatMenuModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
     MatIconModule,
-    MatTabsModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
-    NgxEditorModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    PortalModule,
+    ScrollingModule,
     FormsModule,
     BsDatepickerModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
