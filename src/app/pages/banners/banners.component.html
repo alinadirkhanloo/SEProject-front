@@ -1,6 +1,8 @@
 <div class="w3-container w3-margin-bottom" dir="rtl">
   <div class="w3-row-padding w3-margin-top">
-
+    <div class="w3-panel w3-center">
+      <h1>آگهی ها</h1>
+    </div>
     <div class="banner" *ngFor="let ban of banners;index as i">
       <div class="w3-card w3-animate-opacity">
         <div class="w3-container w3-indigo w3-padding">
@@ -9,13 +11,21 @@
         <div class="w3-container w3-margin">
           <h5>{{ban.summary}}</h5>
         </div>
+
+        <mat-divider></mat-divider>
+        <mat-chip-list aria-label="tag selection" class="tag-selection">
+          <mat-chip color="primary" selected
+           *ngFor="let tag of ban.tags;index as i">{{tag}}</mat-chip>
+        </mat-chip-list>
+
         <div class="w3-row">
           <div class="w3-col s3">
             <button mat-raised-button class="w3-left w3-margin"
             onclick="document.getElementById('id01').style.display='block'"
             (click)="getBanner(i)" color="primary">بیشتر</button>
           </div>
-          <div class="w3-col s9"><h5 class="w3-right w3-margin">{{ban.date}}</h5></div>
+          <div class="w3-col s9"><h5 class="w3-right w3-margin"><i class="fa fa-clock"></i>
+          {{ban.date}}</h5></div>
         </div>
       </div>
     </div>
@@ -35,16 +45,21 @@
 
 <!-- The Modal -->
 <div id="id01" class="w3-modal">
-  <div class="w3-modal-content">
+  <div class="w3-modal-content w3-margin-top">
     <div class="w3-container" *ngIf="banner">
       <span onclick="document.getElementById('id01').style.display='none'"
       class="w3-button w3-display-topleft">&times;</span>
-      <div class="w3-panel w3-padding">
+      <div class="w3-panel w3-padding w3-center">
           <h1>{{banner.title}}</h1>
       </div>
       <div class="w3-container w3-margin">
         <h5>{{banner.body}}</h5>
       </div>
+      <mat-divider></mat-divider>
+        <mat-chip-list aria-label="tag selection" class="tag-selection">
+          <mat-chip color="primary" selected
+           *ngFor="let tag of banner.tags;index as i">{{tag}}</mat-chip>
+        </mat-chip-list>
     </div>
   </div>
 </div>
