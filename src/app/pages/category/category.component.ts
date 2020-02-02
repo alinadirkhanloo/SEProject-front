@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
  constructor() { }
-
+  cat=[
+    'css','css','css','css','css','css','css','css','css','css'
+  ]
   ngOnInit() {
   }
 

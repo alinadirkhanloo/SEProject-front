@@ -1,73 +1,43 @@
 
-<div class="login">
-  <mat-tab-group class="login-card w3-card-4 w3-center w3-animate-zoom">
-    <mat-tab label="ورود">
-      <mat-card-header class="w3-margin">
-        <mat-card-title class="w3-text">وارد شوید!</mat-card-title>
-      </mat-card-header>
+<div class="login-card w3-center"  dir="rtl" style="margin-top: 5%;">
+   <mat-card-header>
+     <mat-card-title class="w3-xxlarge">وارد شوید !!!</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()" style="margin: 4% 0;">
+       <table class="login-full-width w3-animate-zoom" cellspacing="0">
+         <tr>
+           <td>
 
-      <mat-card-content>
-        <form class="example-form">
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                <input matInput placeholder="ایمیل" [(ngModel)]="email" name="email" required>
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-            <td>
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
-                </mat-form-field></td>
-          </tr></table>
-        </form>
-        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-      </mat-card-content>
+            <i class="fas fa-envelope w3-text-gray" style="width:15%;"></i>
+            <mat-form-field class="login-full-width">
+            <input matInput placeholder="ایمیل" formControlName="email" name="email" required>
+            </mat-form-field>
 
-      <mat-card-actions class="w3-margin">
-        <button mat-raised-button (click)="login()" color="primary">ورود</button>
-      </mat-card-actions>
-    </mat-tab>
-    <mat-tab label="ثبت نام">
-      <mat-card-header class="w3-margin">
-        <mat-card-title class="w3-text">بیا شروع کنیم!</mat-card-title>
-      </mat-card-header>
+           </td>
+         </tr>
+         <tr>
+          <td>
+          <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
+            <mat-form-field class="login-full-width">
+              <input matInput placeholder="رمز عبور" formControlName="password" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td class="w3-right">
+            <p style="margin-right: 50%;width: 100%;">
+              <a href="#">رمزعبور </a>رو فراموش کردی ؟
+            </p>
+          </td>
+        </tr>
+      </table>
+      <div class="btns">
+        <button mat-raised-button class="btn login-button w3-green w3-animate-right">ورود</button>
+        <button mat-raised-button class="btn sign-up-button w3-red w3-animate-left" (click)="register()">ثبت نام</button>
+      </div>
 
-      <mat-card-content>
-        <form class="example-form">
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                <input matInput placeholder="ایمیل" [(ngModel)]="email" name="email" required>
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
-                </mat-form-field>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="رمزعبور" [(ngModel)]="password"type="password" name="password" required>
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
-        </form>
-        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-      </mat-card-content>
-
-      <mat-card-actions class="w3-margin">
-        <button mat-raised-button (click)="login()" color="primary">ثبت نام</button>
-      </mat-card-actions>
-    </mat-tab>
-  </mat-tab-group>
-</div>
-
+     </form>
+     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+   </mat-card-content>
+ </div>

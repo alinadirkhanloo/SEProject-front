@@ -1,0 +1,76 @@
+
+<div class="reg-card w3-center"  dir="rtl" style="margin-top: 5%;">
+   <mat-card-header>
+     <mat-card-title class="w3-xxlarge">ثبت نام</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="reg-form" style="margin:4% 0;">
+       <table class="reg-full-width w3-animate-zoom" cellspacing="0">
+        <!--<tr>
+          <td>
+          <button mat-mini-fab color="warn">G</button>
+          <div class="w3-margin-top">ثبت نام با Google</div>
+          <hr/>
+          </td>
+        </tr>-->
+         <tr>
+           <td>
+            <i class="fas fa-user w3-text-gray" style="width:15%;"></i>
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="firstName" name="firstName" placeholder="نام" required>
+              </mat-form-field>
+
+           </td>
+         </tr>
+         <tr>
+           <td>
+            <i class="fa fa-user w3-text-gray" style="width:15%;"></i>
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="lastName" name="lastName"  placeholder="نام خانوادگی" required>
+              </mat-form-field>
+
+           </td>
+         </tr>
+          <tr>
+           <td>
+            <i class="fa fa-phone w3-text-gray" style="width:15%;"></i>
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="phone" name="phone" type="tel" pattern="[09][0-9]+"   minlength="11" maxlength="11" placeholder="شماره همراه" required>
+              </mat-form-field>
+           </td>
+         </tr>
+         <tr>
+           <td>
+
+            <i class="fas fa-envelope w3-text-gray" style="width:15%;"></i>
+            <mat-form-field class="reg-full-width">
+            <input matInput  placeholder="ایمیل" formControlName="email" name="email" required>
+            </mat-form-field>
+
+           </td>
+         </tr>
+         <tr>
+          <td>
+          <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
+            <mat-form-field class="reg-full-width">
+              <input matInput formControlName="password" placeholder="رمز عبور" type="password" name="password" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <!--<tr>
+          <td>
+          <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
+            <mat-form-field class="reg-full-width">
+              <input matInput placeholder="تکرار رمز عبور" [(ngModel)]="repassword"type="password" name="repassword" required>
+            </mat-form-field>
+          </td>
+        </tr>-->
+
+      </table>
+      <div class="btns">
+        <button mat-raised-button class="btn sign-up-button w3-red w3-animate-bottom" >ثبت نام</button>
+      </div>
+     </form>
+     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+   </mat-card-content>
+ </div>

@@ -1,0 +1,16 @@
+*{
+  font-family: vazir;
+}
+i{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+
+}
+.posts ::ng-deep .mat-tab-label{
+  width: 33.33%;
+  font-family: vazir!important;
+
+}
+.posts ::ng-deep .mat-ink-bar{
+  background-color: #4CAF50!important
+}

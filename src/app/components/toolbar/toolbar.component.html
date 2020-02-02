@@ -18,21 +18,22 @@
           </span>
       </mat-menu>
 
-      <button mat-button [routerLink]="['home']" class="w3-margin-right">صفحه اصلی</button>
-      <button mat-button [routerLink]="['category']">لیست دسته بندی موضوعات</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>آگهی</mat-icon>
+      <button mat-button class="btns" [routerLink]="['home']" class="w3-margin-right">صفحه اصلی</button>
+
+      <button mat-button class="btns" [matMenuTriggerFor]="menu">
+       آگهی
       </button>
       <mat-menu  #menu="matMenu">
         <button  mat-menu-item [routerLink]="['banner-panel']">
 
           <span>ایجاد آگهی<i class="material-icons"></i></span>
         </button>
-        <button mat-menu-item [routerLink]="['banners']" >
+        <button mat-menu-item class="btns" [routerLink]="['banners']" >
           <span>مشاهده همه آگهی ها</span>
         </button>
       </mat-menu>
-    <button mat-button [routerLink]="['login']">ورود/ثبت نام</button>
+    <button mat-button class="btns" [routerLink]="['category']">مقالات</button>
+    <button mat-button class="w3-green" [routerLink]="['login']">ورود/ثبت نام</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

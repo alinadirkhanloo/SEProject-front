@@ -55,7 +55,7 @@ export class EditorComponent{
       ['fontSize']
     ]
 };
-visible = true;
+  visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;

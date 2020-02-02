@@ -1,0 +1,81 @@
+*{
+  font-family: vazir;
+}
+.banner-title{
+  overflow: hidden;
+  h1{
+  min-height: 85px;
+  line-height: 2em;
+  }
+}
+
+
+.editor::ng-deep .angular-editor-textarea{
+  min-height: 45vh!important;
+  margin: 10px!important;
+  border: none!important;
+}
+
+.editor::ng-deep .angular-editor-toolbar{
+  margin:10px!important;
+}
+
+.editor{
+  margin: 2% 20%;
+  background: #fff;
+}
+::ng-deep .angular-editor-textarea{
+  min-height: 45vh!important;
+  border: none!important;
+}
+
+::ng-deep .angular-editor-textarea:focus{
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.txtarea:focus{
+  border: none;
+  overflow: auto;
+  outline: none;
+}
+
+::ng-deep .angular-editor-placeholder{
+  margin-right: 10px!important;
+}
+::ng-deep .angular-editor-toolbar{
+  margin:10px!important;
+}
+
+.tag-chips ::ng-deep .mat-form-field{
+  display: block;
+}
+
+.txtarea{
+  resize: vertical
+}
+
+.banner-form ::ng-deep .mat-form-field{
+  width: 90%
+}
+.banner-full-width{
+margin: auto 5%;
+
+}
+.sum-txtarea{
+  min-height: 20%;
+}
+.banner-full-width::ng-deep .mat-form-field-underline{
+  display: none!important;
+}
+
+.banner-full-width::ng-deep .mat-form-field-wrapper{
+  padding: 0!important;
+}
+.banner-textarea{
+  min-height: 200px;
+}
+
