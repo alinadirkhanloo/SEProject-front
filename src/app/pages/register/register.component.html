@@ -17,16 +17,7 @@
            <td>
             <i class="fas fa-user w3-text-gray" style="width:15%;"></i>
               <mat-form-field class="example-full-width">
-                <input matInput formControlName="firstName" name="firstName" placeholder="نام" required>
-              </mat-form-field>
-
-           </td>
-         </tr>
-         <tr>
-           <td>
-            <i class="fa fa-user w3-text-gray" style="width:15%;"></i>
-              <mat-form-field class="example-full-width">
-                <input matInput formControlName="lastName" name="lastName"  placeholder="نام خانوادگی" required>
+                <input matInput formControlName="firstName" name="firstName" placeholder="نام و نام خانوادگی" required>
               </mat-form-field>
 
            </td>
@@ -46,9 +37,17 @@
             <mat-form-field class="reg-full-width">
             <input matInput  placeholder="ایمیل" formControlName="email" name="email" required>
             </mat-form-field>
-
            </td>
          </tr>
+         <tr>
+            <td>
+             <i class="fa fa-user w3-text-gray" style="width:15%;"></i>
+               <mat-form-field class="example-full-width">
+                 <input matInput formControlName="username" name="username"  placeholder="نام کاربری" required>
+               </mat-form-field>
+
+            </td>
+          </tr>
          <tr>
           <td>
           <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
@@ -57,6 +56,14 @@
             </mat-form-field>
           </td>
         </tr>
+        <tr>
+            <td>
+            <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
+              <mat-form-field class="reg-full-width">
+                <input matInput formControlName="repassword" placeholder="تکرار کلمه عبور" type="repassword" name="password" required>
+              </mat-form-field>
+            </td>
+          </tr>
         <!--<tr>
           <td>
           <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>

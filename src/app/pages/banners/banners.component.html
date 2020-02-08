@@ -3,65 +3,69 @@
     <div class="w3-panel w3-center">
       <h1>آگهی ها</h1>
     </div>
-    <div class="banner" *ngFor="let ban of banners;index as i">
-      <div class="w3-card w3-animate-opacity">
-        <div class="w3-container w3-indigo w3-padding">
-          <h1>{{ban.title}}</h1>
-        </div>
-        <div class="w3-container w3-margin">
-          <h5>{{ban.summary}}</h5>
-        </div>
 
-        <mat-divider></mat-divider>
-        <mat-chip-list aria-label="tag selection" class="tag-selection">
-          <mat-chip color="primary" selected
-           *ngFor="let tag of ban.tags;index as i">{{tag}}</mat-chip>
-        </mat-chip-list>
+    <!-- First Banner Grid-->
+    <div class="w3-row-padding">
 
-        <div class="w3-row">
-          <div class="w3-col s3">
-            <button mat-raised-button class="w3-left w3-margin"
-            onclick="document.getElementById('id01').style.display='block'"
-            (click)="getBanner(i)" color="primary">بیشتر</button>
+
+      <div class="w3-third w3-container w3-margin-bottom" *ngFor="let ban of banners;index as i">
+        <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+          <!-- <img src="../../../assets/imgs/it.jpg" alt="Norway" style="width:100%"> -->
+          <h3>{{ban.title}}</h3>
+          <p class="w3-right">
+            <span class="w3-opacity w3-margin"><i class="fa fa-clock w3-margin-right w3-margin-left"></i>1377/12/01</span>
+          </p><br/>
+          <p class="w3-margin">{{ban.summary}}</p>
+          <mat-divider class="w3-margin-top"></mat-divider>
+          <mat-chip-list aria-label="tag selection" class="tag-selection">
+            <mat-chip color="warn" selected *ngFor="let tag of ban.tags;index as i">{{tag}}</mat-chip>
+          </mat-chip-list>
+          <mat-divider></mat-divider>
+          <!-- <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>
+            100</button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+              class="fa fa-star w3-margin-left"></i>4.5</button>-->
+          <span class="w3-right w3-padding w3-margin"><i class="fa fa-certificate w3-margin-left"></i>فوری</span>
+          <span><button mat-raised-button class="w3-left w3-green w3-margin">بیشتر</button></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="w3-center w3-padding-32">
+      <div class="w3-bar">
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+        <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- The Modal -->
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-margin-top">
+        <div class="w3-container" *ngIf="banner">
+          <span onclick="document.getElementById('id01').style.display='none'"
+            class="w3-button w3-display-topleft">&times;</span>
+          <div class="w3-panel w3-padding w3-center">
+            <h1>{{banner.title}}</h1>
           </div>
-          <div class="w3-col s9"><h5 class="w3-right w3-margin"><i class="fa fa-clock"></i>
-          {{ban.date}}</h5></div>
+          <div class="w3-container w3-margin">
+            <h5>{{banner.body}}</h5>
+          </div>
+          <mat-divider></mat-divider>
+          <mat-chip-list aria-label="tag selection" class="tag-selection">
+            <mat-chip color="primary" selected *ngFor="let tag of banner.tags;index as i">{{tag}}</mat-chip>
+          </mat-chip-list>
         </div>
       </div>
     </div>
-
-    <div class="pagination w3-center" >
-      <button mat-raised-button class="w3-margin w3-padding" color="primary">قبلی</button>
-      <button mat-raised-button>1</button>
-      <button mat-raised-button class="w3-margin" color="primary">2</button>
-      <button mat-raised-button>3</button>
-      <button mat-raised-button class="w3-margin w3-padding" color="primary">بعدی</button>
-    </div>
   </div>
-
-
-
-
-
-<!-- The Modal -->
-<div id="id01" class="w3-modal">
-  <div class="w3-modal-content w3-margin-top">
-    <div class="w3-container" *ngIf="banner">
-      <span onclick="document.getElementById('id01').style.display='none'"
-      class="w3-button w3-display-topleft">&times;</span>
-      <div class="w3-panel w3-padding w3-center">
-          <h1>{{banner.title}}</h1>
-      </div>
-      <div class="w3-container w3-margin">
-        <h5>{{banner.body}}</h5>
-      </div>
-      <mat-divider></mat-divider>
-        <mat-chip-list aria-label="tag selection" class="tag-selection">
-          <mat-chip color="primary" selected
-           *ngFor="let tag of banner.tags;index as i">{{tag}}</mat-chip>
-        </mat-chip-list>
-    </div>
-  </div>
-</div>
-</div>
-

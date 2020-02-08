@@ -1,33 +1,92 @@
-<div class="w3-container w3-center">
+<div class="w3-container w3-center w3-margin">
   <h1 class="w3-text">مقاله جدید</h1>
 </div>
 <div class="w3-container editor" dir="rtl">
-    <textarea class="w3-input w3-card txtarea w3-xlarge w3-animate-left" [placeholder]="'عنوان مقاله را وارد نمایید...'" type="text"></textarea>
-    <textarea class="w3-input w3-margin-top w3-card txtarea w3-xlarge w3-animate-right" [placeholder]="'خلاصه ای از متن  را وارد نمایید...'" type="text"></textarea>
-    <div class="w3-container w3-margin-top w3-card w3-animate-zoom">
-      <angular-editor [(ngModel)]="htmlContent"
-      [config]="editorConfig"></angular-editor>
-    </div>
-    <div class="tag-chips w3-panel w3-card">
-      <mat-form-field class="example-chip-list w3-margin-top w3-padding">
+  <form [formGroup]="blogForm" (ngSubmit)="onSubmit()" class="banner-form w3-padding-24">
+
+    <mat-card class="card w3-animate-left">
+      <p> عنوان مقاله را وارد نمایید. حداکثر 300 کاراکتر</p>
+      <mat-form-field class="banner-full-width w3-margin-bottom w3-padding ">
+        <span><i class="fa fa-pen w3-right w3-margin-left"></i>
+          <input matInput formControlName="title" Name="title" maxlength="12" class="w3-large"></span>
+      </mat-form-field>
+      <div class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding">
+        <!-- <textarea matInput class="sum-txtarea w3-large w3-animate-left" placeholder="خلاصه را وارد نمایید" type="text"></textarea> -->
+        <!-- <h3 contenteditable="true" class="banner-textarea">عنوان را وارد نمایید</h3> -->
+      </div>
+    </mat-card>
+
+    <mat-card class="card w3-animate-right">
+      <p> خلاصه مقاله را وارد نمایید. حداکثر 700 کاراکتر</p>
+      <div class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding">
+        <span><i class="fa fa-pen w3-right w3-margin-left"></i>
+          <textarea formControlName="sumery" class="sum-txtarea w3-large w3-animate-left" maxlength="10"
+            type="text"></textarea></span>
+        <!-- <p contenteditable="true" class="banner-textarea w3-large">خلاصه را وارد نمایید</p> -->
+      </div>
+    </mat-card>
+    <!-- <mat-form-field class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding w3-animate-left">
+          <textarea matInput class="w3-large banner-textarea" placeholder="متن را وارد نمایید" type="text"></textarea>
+        </mat-form-field> -->
+
+    <!-- <mat-card class="card w3-animate-left">
+      <p>متن مورد نظر خود را در این قسمت وارد کنید. با اتنخاب متن می توانید تغییرات مربوطه را اعمال نمایید.</p>
+      <div (textSelect)="renderRectangles( $event )"
+        class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding">
+        <span><i class="fa fa-pen w3-right w3-margin-left"></i>
+          <p contenteditable="true" class="banner-textarea w3-large "></p>
+        </span>
+        <div *ngIf="hostRectangle" class="indicator" [style.left.px]="hostRectangle.left"
+          [style.top.px]="hostRectangle.top" [style.width.px]="hostRectangle.width" [style.height.px]="0">
+
+          <div class="indicator__cta">
+            <div class="row indicator__cta-link text-center" style="width: 200px;padding:0;">
+              <div class="col-md-3 sel w3-padding">
+                <a (mousedown)="$event.preventDefault()" (mouseup)="$event.stopPropagation(); shareSelection()"
+                  class="">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </div>
+              <div class="col-md-3 sel w3-padding">
+                <a (mousedown)="$event.preventDefault()" (mouseup)="$event.stopPropagation(); shareSelection()"
+                  class="">
+                  <i class="fa fa-paint-brush"></i>
+                </a>
+              </div>
+              <div class="col-md-3 sel w3-padding">
+                <a (mousedown)="$event.preventDefault()" (mouseup)="$event.stopPropagation(); shareSelection()"
+                  class="">
+                  <i class="fa fa-telegram"></i>
+                </a>
+              </div>
+              <div class="col-md-3 sel w3-padding">
+                <a (mousedown)="$event.preventDefault()" (mouseup)="$event.stopPropagation(); shareSelection()"
+                  class="">
+                  <i class="fa fa-telegram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </mat-card> -->
+
+    <mat-card class="text-editor">
+      <p class="w3-margin-bottom">متن مورد نظر خود را در این قسمت وارد کنید. با اتنخاب متن می توانید تغییرات مربوطه را اعمال نمایید.</p>
+      <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
+    </mat-card>
+
+    <mat-card class="card w3-animate-right">
+      <mat-form-field class="example-chip-list  banner-full-width w3-margin-bottom w3-margin-top w3-padding">
         <mat-chip-list #chipList aria-label="Tag">
-          <mat-chip
-            *ngFor="let tag of tags"
-            [selectable]="selectable"
-            [removable]="removable"
-            (removed)="remove(tag)">
+          <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
             {{tag}}
             <span matChipRemove *ngIf="removable">X</span>
           </mat-chip>
-          <input
-            placeholder="افزودن تگ..."
-            #tagInput
-            FormControl="tagCtrl"
-            [matAutocomplete]="auto"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)">
+          <input class="w3-margin-bottom" placeholder="افزودن تگ" #tagInput FormControl="tagCtrl"
+            [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
           <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
@@ -35,9 +94,10 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </div>
-    <div class="w3-margin-top w3-animate-bottom">
-      <button mat-raised-button color="primary">منتشر کن</button>
-    </div>
+    </mat-card>
 
+    <div class="w3-margin" style="width:90%;">
+      <button mat-raised-button type="submit" class="w3-green" style="margin:0 4%;">منتشر کن</button>
+    </div>
+  </form>
 </div>

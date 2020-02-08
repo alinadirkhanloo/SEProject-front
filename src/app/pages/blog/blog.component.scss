@@ -1,5 +1,8 @@
-p,h4,h1{
+*{
   font-family: vazir;
+}
+i{
+  font-family: "Font Awesome 5 Free";
 }
 
 .indicator {
@@ -45,3 +48,6 @@ p,h4,h1{
 		}
 
 
+    i:hover{
+      color: #FFFFFF!important;
+    }

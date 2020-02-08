@@ -9,24 +9,49 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { BlogsComponent } from './pages/category/blogs/blogs.component';
+import { AuthGuard } from './helpers/auth.guard';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { SearchComponent } from './pages/search/search.component';
+import { CommentsComponent } from './pages/comments/comments.component';
 
+// canLoad: [RandomGuard]
+// const routes: Routes = [
+// {path:'',component:AdminPanelComponent},
+// {path:'login',component:LoginComponent},
+// {path:'banner-panel',component:BannerPanelComponent,canActivate: [AuthGuard]},
+// {path:'banners',component:BannersComponent},
+// {path:'home',component:HomeComponent},
+// {path:'blogs/:category',component:BlogsComponent},
+// {path:'category',component:CategoryComponent},
+// {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
+// {path:'editor',component:EditorComponent ,canActivate: [AuthGuard]},
+// {path:'blog',component:BlogComponent,canActivate: [AuthGuard]},
+// {path:'register',component:RegisterComponent},
+// ];
 
 const routes: Routes = [
-
+{path:'',component:AdminPanelComponent},
 {path:'login',component:LoginComponent},
 {path:'banner-panel',component:BannerPanelComponent},
 {path:'banners',component:BannersComponent},
-{path:'',component:HomeComponent},
+{path:'home',component:HomeComponent},
+{path:'blogs/:category',component:BlogsComponent},
 {path:'category',component:CategoryComponent},
 {path:'profile',component:ProfileComponent},
-{path:'editor',component:EditorComponent},
+{path:'editor',component:EditorComponent },
 {path:'blog',component:BlogComponent},
 {path:'register',component:RegisterComponent},
+{path:'search',component:SearchComponent},
+{path:'comments',component:CommentsComponent},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthGuard
+  ]
 })
 export class AppRoutingModule { }

@@ -10,6 +10,7 @@ export class AppComponent {
   darkmode: boolean;
 
   constructor() { }
+
   ngOnInit() {
   }
 

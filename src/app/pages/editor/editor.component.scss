@@ -1,6 +1,9 @@
 *{
   font-family: vazir;
 }
+i{
+  font-family: "Font Awesome 5 Free";
+}
 .banner-title{
   overflow: hidden;
   h1{
@@ -9,43 +12,15 @@
   }
 }
 
-
-.editor::ng-deep .angular-editor-textarea{
-  min-height: 45vh!important;
-  margin: 10px!important;
-  border: none!important;
-}
-
-.editor::ng-deep .angular-editor-toolbar{
-  margin:10px!important;
-}
-
 .editor{
-  margin: 2% 20%;
-  background: #fff;
+  margin: 0 20%;
+  background: #fcfcfc;
 }
 ::ng-deep .angular-editor-textarea{
   min-height: 45vh!important;
   border: none!important;
 }
 
-::ng-deep .angular-editor-textarea:focus{
-  border: none;
-  overflow: auto;
-  outline: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.txtarea:focus{
-  border: none;
-  overflow: auto;
-  outline: none;
-}
-
-::ng-deep .angular-editor-placeholder{
-  margin-right: 10px!important;
-}
 ::ng-deep .angular-editor-toolbar{
   margin:10px!important;
 }
@@ -54,15 +29,12 @@
   display: block;
 }
 
-.txtarea{
-  resize: vertical
-}
 
 .banner-form ::ng-deep .mat-form-field{
   width: 90%
 }
 .banner-full-width{
-margin: auto 5%;
+margin: auto 1%;
 
 }
 .sum-txtarea{
@@ -78,4 +50,67 @@ margin: auto 5%;
 .banner-textarea{
   min-height: 200px;
 }
+ .card{
+   margin:5% 0;
+ }
 
+ textarea,input{
+  border: none;
+  width: 90%;
+}
+textarea:focus,input:focus, h3:focus,p:focus{
+  border: none;
+  overflow: auto;
+  outline: none;
+}
+.indicator {
+	background-color: fade( gold, 10% ) ;
+	position: absolute ;
+	z-index: 2 ;
+	&__cta {
+    top: 25px;
+    left: 115px;
+		position: absolute ;
+	}
+
+	&__cta-link {
+		background-color: #333333 ;
+		border-radius: 5px 5px 5px 5px ;
+		bottom: 0px ;
+		box-shadow: 2px 2px 5px fade( #000000, 30% ) ;
+		color: #FFFFFF ;
+		cursor: pointer ;
+		left: 0px ;
+		padding: 11px 22px 10px 22px ;
+		position: absolute ;
+		transform: translateX( -50% ) ;
+		white-space: nowrap ;
+
+		&:after {
+			bottom: -10px ;
+			font-size: 15px ;
+			left: 50% ;
+			line-height: 15px ;
+			content: "▼" ;
+			color: #333333 ;
+			position: absolute ;
+			transform: translateX( -50% ) ;
+		}
+
+	}
+}
+
+.indicator .sel:hover {
+			background-color: rgb(255, 0, 0) ;
+			color: #fff;
+		}
+i:hover{
+  color: #FFFFFF!important;
+}
+
+
+.text-editor ::ng-deep .angular-editor-textarea:focus,.angular-editor-wrapper:focus{
+  border:none;
+  overflow: auto;
+  outline: none;
+}

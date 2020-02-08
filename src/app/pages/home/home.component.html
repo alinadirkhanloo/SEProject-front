@@ -1,8 +1,8 @@
 <app-nav></app-nav>
 <div class="w3-content" dir="rtl" style="max-width:1400px">
-<!-- Header -->
-<header class="w3-container w3-center w3-padding-32">
-  <!--<h1><b>جديدترین مقاله ها</b></h1>
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-32">
+    <!--<h1><b>جديدترین مقاله ها</b></h1>
 <div class="w3-container" style="padding:128px 16px" id="about">
     <h3 class="w3-center">DIVISION BY ZERO</h3>
     <p class="w3-center w3-large">وب سایتی برای همه کامپیوتری ها</p>
@@ -29,16 +29,15 @@
     </div>
   </div>
 </div>-->
+  </header>
 
-</header>
+  <!-- Grid -->
+  <div class="w3-row">
 
-<!-- Grid -->
-<div class="w3-row">
-
-<!-- Blog entries -->
-<div class="w3-col l8 s12">
-  <!-- Blog entry -->
-  <div class="w3-card-4 w3-margin w3-white">
+    <!-- Blog entries -->
+    <div class="w3-col l9 s12">
+      <!-- Blog entry -->
+      <!-- <div class="w3-card-4 w3-margin w3-white">
     <img src="../../../assets/imgs/it.jpg" alt="Nature" style="width:100%">
     <div class="w3-container">
       <h3><b>یادگیری ماشین</b></h3>
@@ -57,110 +56,173 @@
       </div>
     </div>
   </div>
-  <hr>
-
-  <!-- Blog entry -->
-  <div class="w3-card-4 w3-margin w3-white">
-    <img src="../../../assets/imgs/it.jpg" alt="Nature" style="width:100%">
-    <div class="w3-container">
-      <h3><b>یادگیری ماشین</b></h3>
-      <h5>یادگیری عمیق, <span class="w3-opacity">1398/08/24</span></h5>
-    </div>
-
-    <div class="w3-container">
-      <p>در این آموزش ویدئویی، یکی از محبوب ترین و پرکاربردترین علوم حوزه هوش مصنوعی، یعنی یادگیری عمیق (Deep learning)، معرفی شده است. در این آموزش، علاوه بر آشنایی با مبانی تئوری یادگیری عمیق، تکنیک ها و مدل های مختلف آموزش شبکه های عصبی عمیق، قادر خواهید بود تا در عمل نیز به طراحی، پیاده سازی و آموزش این شبکه ها بپردازید. همچنین در این آموزش به کاربردهای آکادمیک و تحقیقاتی و هم به کاربردهای عملی یادگیری عمیق توجه شده است. در این آموزش، تمرکز بر روی محبوب ترین مدل و کاربرد یادگیری عمیق یعنی مدل شبکه عصبی کانولوشنی با کاربرد در بینایی ماشین و پردازش تصویر خواهد بود.</p>
-      <div class="w3-row">
-        <div class="w3-col m4 s12" dir="ltr">
-          <p><button mat-raised-button class="w3-indigo w3-green w3-border"><b> «  بیشتر</b></button></p>
-        </div>
-        <div class="w3-col m8 w3-hide-small">
-          <p><span class="w3-padding-large w3-right"><b>نظرها  </b> <span class="w3-tag">0</span></span></p>
+  <hr> -->
+      <div class="w3-row-padding w3-margin-top">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding-16">
+              <span class="w3-margin-left"><i class="fa fa-list w3-margin-left"></i>مرتب سازی بر اساس :</span>
+              <button class="w3-button w3-green">همه</button>
+              <button class="w3-button"><i class="fa fa-star w3-margin-left"></i>امتیاز</button>
+              <button class="w3-button w3-hide-small"><i class="fa fa-thumbs-up w3-margin-left"></i>محبوبیت</button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div *ngFor="let item of [1,2,3,4,5,5]" class="w3-container"><br>
+        <div class="w3-round w3-card w3-white" style="padding: 32px;">
+          <!-- <span class="w3-left w3-opacity">1 min</span> -->
+          <p class="w3-left">1 دقیقه, <span class="w3-opacity">1398/08/24</span></p>
+          <h3>یادگیری ماشین</h3><br>
+          <p>در این آموزش ویدئویی، یکی از محبوب ترین و پرکاربردترین علوم حوزه هوش مصنوعی، یعنی یادگیری عمیق (Deep
+            learning)، معرفی شده است. در این آموزش، علاوه بر آشنایی با مبانی تئوری یادگیری عمیق، تکنیک ها و مدل های
+            مختلف
+            آموزش شبکه های عصبی عمیق، قادر خواهید بود تا در عمل نیز به طراحی، پیاده سازی و آموزش این شبکه ها بپردازید.
+            همچنین در این آموزش به کاربردهای آکادمیک و تحقیقاتی و هم به کاربردهای عملی یادگیری عمیق توجه شده است. در این
+            آموزش، تمرکز بر روی محبوب ترین مدل و کاربرد یادگیری عمیق یعنی مدل شبکه عصبی کانولوشنی با کاربرد در بینایی
+            ماشین و پردازش تصویر خواهد بود.</p>
+          <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom">
+
+          <button type="button" class="w3-button w3-theme-d1"><i class="fa fa-thumbs-up"></i>
+            100</button>
+          <button type="button" class="w3-button w3-theme-d2"><i class="fa fa-star w3-margin-left"></i>4.5</button>
+          <span>
+            <button mat-raised-button class="w3-left w3-green w3-border">بیشتر</button></span>
+        </div>
+      </div>
+      <!-- END BLOG ENTRIES -->
     </div>
-  </div>
-<!-- END BLOG ENTRIES -->
+
+    <!-- Introduction menu -->
+    <div class="w3-col l3">
+      <!-- About Card -->
+      <!-- <div class="w3-card w3-margin w3-margin-top">
+        <img src="../../../assets/imgs/it.jpg" style="width:100%">
+        <div class="w3-container w3-white">
+          <h4><b>My Name</b></h4>
+          <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem
+            ipsum and mauris neque quam blog. I want to share my world with you.</p>
+        </div>
+      </div>
+      <hr> -->
+
+      <!-- Posts -->
+      <div class="w3-card w3-margin w3-white">
+        <div class="w3-container w3-padding">
+          <h4 class="w3-right w3-margin-top">برترین مقاله ها</h4>
+          <a href="#" class="w3-left w3-margin">همه</a>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+        </ul>
+      </div>
+      <hr>
+
+      <!-- Labels / tags -->
+      <div class="w3-card w3-margin w3-white">
+        <div class="w3-container w3-padding">
+          <h4>پر بازدید</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <ul class="w3-ul w3-hoverable w3-white">
+            <li class="w3-padding-16">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+            <li class="w3-padding-16">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+            <li class="w3-padding-16">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+            <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Labels / tags -->
+      <div class="w3-card w3-margin w3-white">
+        <div class="w3-container w3-padding">
+          <h4>پیشنهادی برای شما</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <ul class="w3-ul w3-hoverable w3-white">
+            <li class="w3-padding-16">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+            <li class="w3-padding-16">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+            <li class="w3-padding-16">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+            <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+              <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+              <span class="w3-large">یادگیری ماشین</span><br>
+              <span>یادگیری عمیق</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="w3-card w3-round w3-margin w3-white w3-hide-small">
+        <div class="w3-container">
+          <h4>برترین تگ ها</h4>
+          <p>
+            <span class="w3-tag w3-small w3-theme-d5">News</span>
+            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+            <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+            <span class="w3-tag w3-small w3-theme-d2">Games</span>
+            <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+            <span class="w3-tag w3-small w3-theme">Games</span>
+            <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+            <span class="w3-tag w3-small w3-theme-l2">Food</span>
+            <span class="w3-tag w3-small w3-theme-l3">Design</span>
+            <span class="w3-tag w3-small w3-theme-l4">Art</span>
+            <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- END Introduction Menu -->
+    </div>
+
+    <!-- END GRID -->
+  </div><br>
+  <!-- END w3-content -->
 </div>
-
-<!-- Introduction menu -->
-<div class="w3-col l4">
-  <!-- About Card -->
-  <div class="w3-card w3-margin w3-margin-top">
-    <img src="../../../assets/imgs/it.jpg" style="width:100%">
-    <div class="w3-container w3-white">
-      <h4><b>My Name</b></h4>
-      <p>Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest of lorem ipsum and mauris neque quam blog. I want to share my world with you.</p>
-    </div>
-  </div><hr>
-
-  <!-- Posts -->
-  <div class="w3-card w3-margin">
-    <div class="w3-container w3-padding">
-      <h4 class="w3-right w3-margin-top">برترین مقاله ها</h4>
-      <a href="#" class="w3-left w3-margin">همه</a>
-    </div>
-    <ul class="w3-ul w3-hoverable w3-white">
-      <li class="w3-padding-16">
-        <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">یادگیری ماشین</span><br>
-        <span>یادگیری عمیق</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">یادگیری ماشین</span><br>
-        <span>یادگیری عمیق</span>
-      </li>
-      <li class="w3-padding-16">
-        <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">یادگیری ماشین</span><br>
-        <span>یادگیری عمیق</span>
-      </li>
-      <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-        <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-        <span class="w3-large">یادگیری ماشین</span><br>
-        <span>یادگیری عمیق</span>
-      </li>
-    </ul>
-  </div>
-  <hr>
-
-  <!-- Labels / tags -->
-  <div class="w3-card w3-margin">
-    <div class="w3-container w3-padding">
-      <h4>پیشنهادی برای شما</h4>
-    </div>
-    <div class="w3-container w3-white">
-      <ul class="w3-ul w3-hoverable w3-white">
-        <li class="w3-padding-16">
-          <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">یادگیری ماشین</span><br>
-          <span>یادگیری عمیق</span>
-        </li>
-        <li class="w3-padding-16">
-          <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">یادگیری ماشین</span><br>
-          <span>یادگیری عمیق</span>
-        </li>
-        <li class="w3-padding-16">
-          <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">یادگیری ماشین</span><br>
-          <span>یادگیری عمیق</span>
-        </li>
-        <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-          <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">یادگیری ماشین</span><br>
-          <span>یادگیری عمیق</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-<!-- END Introduction Menu -->
-</div>
-
-<!-- END GRID -->
-</div><br>
-
-<!-- END w3-content -->
-</div>
-<app-footer></app-footer>

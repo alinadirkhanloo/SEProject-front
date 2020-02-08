@@ -1,26 +1,26 @@
-
-<div class="login-card w3-center"  dir="rtl" style="margin-top: 5%;">
-   <mat-card-header>
-     <mat-card-title class="w3-xxlarge">وارد شوید !!!</mat-card-title>
-   </mat-card-header>
-   <mat-card-content>
-     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()" style="margin: 4% 0;">
-       <table class="login-full-width w3-animate-zoom" cellspacing="0">
-         <tr>
-           <td>
+<div class="login-card w3-center" dir="rtl" style="margin-top: 5%;">
+  <mat-card-header>
+    <mat-card-title class="w3-xxlarge">وارد شوید !!!</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()" style="margin: 4% 0;">
+      <table class="login-full-width w3-animate-zoom" cellspacing="0">
+        <tr>
+          <td>
 
             <i class="fas fa-envelope w3-text-gray" style="width:15%;"></i>
             <mat-form-field class="login-full-width">
-            <input matInput placeholder="ایمیل" formControlName="email" name="email" required>
+              <input matInput placeholder="ایمیل" formControlName="Username" name="Username" required>
             </mat-form-field>
 
-           </td>
-         </tr>
-         <tr>
+          </td>
+        </tr>
+        <tr>
           <td>
-          <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
+            <i class="fas fa-lock w3-text-gray" style="width:15%;"></i>
             <mat-form-field class="login-full-width">
-              <input matInput placeholder="رمز عبور" formControlName="password" type="password" name="password" required>
+              <input matInput placeholder="رمز عبور" formControlName="Password" type="password" name="password"
+                required>
             </mat-form-field>
           </td>
         </tr>
@@ -34,10 +34,11 @@
       </table>
       <div class="btns">
         <button mat-raised-button class="btn login-button w3-green w3-animate-right">ورود</button>
-        <button mat-raised-button class="btn sign-up-button w3-red w3-animate-left" (click)="register()">ثبت نام</button>
+        <button mat-raised-button class="btn sign-up-button w3-red w3-animate-left" (click)="register()">ثبت
+          نام</button>
       </div>
+      <p class="w3-text-red w3-margin">{{error}}</p>
+    </form>
 
-     </form>
-     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-   </mat-card-content>
- </div>
+  </mat-card-content>
+</div>

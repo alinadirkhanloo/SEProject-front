@@ -69,7 +69,12 @@ import { EditorComponent } from './pages/editor/editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BannerEditorComponent } from './components/banner-editor/banner-editor.component';
 import { TextSelectDirective } from './pages/blog/text-select.directive';
-import { BlogsComponent } from './pages/blogs/blogs.component';
+import { BlogsComponent } from './pages/category/blogs/blogs.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { SearchComponent } from './pages/search/search.component';
+import { CommentsComponent } from './pages/comments/comments.component';
+// import { HttpClientModule} from '@angular/common/http';
+// import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [AppComponent,
@@ -87,7 +92,10 @@ import { BlogsComponent } from './pages/blogs/blogs.component';
     BlogComponent,
     RegisterComponent,
     TextSelectDirective,
-    BlogsComponent
+    BlogsComponent,
+    AdminPanelComponent,
+    SearchComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

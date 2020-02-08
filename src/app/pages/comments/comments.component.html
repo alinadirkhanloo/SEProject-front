@@ -1,0 +1,50 @@
+<div class="w3-container" dir="rtl">
+  <div class="w3-container w3-margin">
+    <div class="w3-card w3-white w3-round w3-container" style="width:70%;margin:auto">
+      <p class="w3-margin w3-center">کامنت های این مقاله</p>
+      <hr />
+      <div class="w3-container w3-margin">
+        <h3 class="w3-right">عنوان مقاله</h3>
+        <button type="button" class="w3-button w3-theme-d1 w3-left"><i class="fa fa-thumbs-up"></i>
+          100</button>
+        <button type="button" class="w3-button w3-theme-d2 w3-left"><i
+            class="fa fa-star w3-margin-left"></i>4.5</button>
+      </div>
+    </div>
+  </div>
+  <div class="w3-margin">
+    <div class="w3-content w3-card w3-border w3-white">
+      <div class="w3-container w3-margin">
+        <div *ngFor="let item of comments" class="w3-margin-bottom w3-border w3-right w3-round  com">
+          <p class="w3-margin"><i class="fa fa-pen w3-margin-left"></i>{{item.userFullName}}</p>
+          <div class="w3-container w3-margin w3-border-right">
+            <p class="w3-margin">{{item.text}}</p>
+          </div>
+          <div class="w3-row">
+          <span class="w3-opacity w3-right w3-padding"><i class="fa fa-clock w3-margin-right w3-margin-left"></i>{{item.time}}</span>
+          <button mat-button class="w3-left w3-margin-left w3-theme-d1"><i class="fa fa-thumbs-up"></i>
+            {{item.userId}}</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- </div> -->
+
+      <!-- <div class="w3-light-gray">
+        <p class="w3-margin">ali</p>
+        <p class="w3-margin">کامنت های این مقاله</p>
+      </div> -->
+      <hr />
+      <div class="w3-container w3-margin">
+        <form class="example-form">
+          <mat-form-field style="width: 75%;margin-right:8%!important;">
+            <!--<textarea matInput class="sum-txtarea w3-large w3-animate-left" placeholder="خلاصه را وارد نمایید" type="text"></textarea>-->
+            <textarea style="text-align: right;" matInput Name="sumery" class="banner-textarea w3-large "
+              [placeholder]="'نظر خود را وارد نمایید...'" type="text"></textarea>
+          </mat-form-field>
+          <button mat-button class="w3-green w3-left send-btn"><i class="fa fa-send"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

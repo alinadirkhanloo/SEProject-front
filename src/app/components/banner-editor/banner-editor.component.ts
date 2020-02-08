@@ -1,61 +1,24 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
+// import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {map, startWith} from 'rxjs/operators';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { map, startWith } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedDataService } from 'src/app/services/shared-data.service';
+
+interface Type {
+  value: string, viewValue: string
+}
 
 @Component({
   selector: 'app-banner-editor',
   templateUrl: './banner-editor.component.html',
   styleUrls: ['./banner-editor.component.scss']
 })
-export class BannerEditorComponent {
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: 'auto',
-    minHeight: '0',
-    maxHeight: 'auto',
-    width: 'auto',
-    minWidth: '0',
-    translate: 'yes',
-    enableToolbar: false,
-    showToolbar: false,
-    placeholder: 'متن را وارد نمایید...',
-    defaultParagraphSeparator: '',
-    defaultFontName: '',
-    defaultFontSize: '',
-    fonts: [
-      {class: 'arial', name: 'Arial'},
-      {class: 'times-new-roman', name: 'Times New Roman'},
-      {class: 'calibri', name: 'Calibri'},
-      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-    ],
-    customClasses: [
-    {
-      name: 'quote',
-      class: 'quote',
-    },
-    {
-      name: 'redText',
-      class: 'redText'
-    },
-    {
-      name: 'titleText',
-      class: 'titleText',
-      tag: 'h1',
-    },
-  ],
-  uploadUrl: 'v1/image',
-  sanitize: true,
-  toolbarPosition: 'top',
-  toolbarHiddenButtons: [
-    ['bold', 'italic'],
-    ['fontSize']
-  ]
-};
+export class BannerEditorComponent implements OnInit {
+
   visible = true;
   selectable = true;
   removable = true;
@@ -66,13 +29,42 @@ export class BannerEditorComponent {
   tags: string[] = [];
   allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
-  @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor() {
+  panelOpenState = false;
+  bannerForm: FormGroup;
+
+
+
+  types: Type[] = [
+    { value: 'تبلیغات', viewValue: 'تبلیغات' },
+    { value: 'اطلاعیه', viewValue: 'اطلاعیه' },
+    { value: 'استخدامی', viewValue: 'استخدامی' }
+  ];
+  constructor(private formBuilder: FormBuilder) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+  }
+
+  ngOnInit() {
+    this.bannerForm = this.formBuilder.group({
+      title: ['', [Validators.required]],
+      sumery: ['', [Validators.required]],
+      text: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      tags: [[]],
+    });
+  }
+
+  onSubmit() {
+    if (this.bannerForm.invalid) {
+      return;
+    }
+    // this.sharedData.setLoggedIn(true);
+    this.bannerForm.value.tags = this.tags;
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.bannerForm.value, null, 4));
   }
 
 

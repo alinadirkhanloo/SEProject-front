@@ -7,10 +7,22 @@ i{
 
 }
 .posts ::ng-deep .mat-tab-label{
-  width: 33.33%;
+  width: 50%;
   font-family: vazir!important;
 
 }
 .posts ::ng-deep .mat-ink-bar{
   background-color: #4CAF50!important
+}
+.btn{
+  font-size: 18px;
+  padding: 1%;
+  margin: 10% 1%;
+}
+
+.ok-button{
+  width: 70%;
+}
+.cancel-button{
+  width: 24%;
 }
