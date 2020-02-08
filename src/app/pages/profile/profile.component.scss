@@ -1,0 +1,28 @@
+*{
+  font-family: vazir;
+}
+i{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+
+}
+.posts ::ng-deep .mat-tab-label{
+  width: 50%;
+  font-family: vazir!important;
+
+}
+.posts ::ng-deep .mat-ink-bar{
+  background-color: #4CAF50!important
+}
+.btn{
+  font-size: 18px;
+  padding: 1%;
+  margin: 10% 1%;
+}
+
+.ok-button{
+  width: 70%;
+}
+.cancel-button{
+  width: 24%;
+}

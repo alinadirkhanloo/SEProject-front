@@ -7,7 +7,11 @@ import { LoginComponent } from './login.component';
 import { MatFormFieldModule,
   MatInputModule,
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
+  MatError,
+  MatHint,
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher
 } from '@angular/material';
 
 @NgModule({
@@ -15,6 +19,9 @@ import { MatFormFieldModule,
   imports: [
     CommonModule,
     LoginRoutingModule,
+  ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]
 })
 export class LoginModule { }

@@ -1,0 +1,55 @@
+*{
+  font-family: vazir;
+}
+i{
+  font-family:"Font Awesome 5 Free"
+}
+.banner-title{
+  overflow: hidden;
+  h1{
+  min-height: 85px;
+  line-height: 2em;
+  }
+}
+
+.editor{
+  margin: 0 20%;
+  background: #fcfcfc;
+}
+::ng-deep .angular-editor-textarea{
+  min-height: 45vh!important;
+  border: none!important;
+}
+
+::ng-deep .angular-editor-toolbar{
+  margin:10px!important;
+}
+
+.tag-chips ::ng-deep .mat-form-field{
+  display: block;
+}
+
+
+.banner-form ::ng-deep .mat-form-field{
+  width: 90%
+}
+.banner-full-width{
+margin: auto 5%;
+
+}
+.sum-txtarea{
+  min-height: 20%;
+}
+.banner-full-width::ng-deep .mat-form-field-underline{
+  display: none!important;
+}
+
+.banner-full-width::ng-deep .mat-form-field-wrapper{
+  padding: 0!important;
+}
+.banner-textarea{
+  min-height: 200px;
+}
+ .card{
+   margin:5% 0;
+ }

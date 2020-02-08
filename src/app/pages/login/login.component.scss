@@ -1,41 +1,39 @@
 *{
   font-family: vazir;
 }
+i{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 24px;
+}
 
-.login-card{
-  margin: 5% 30%;
-  min-width: 35%;
-  direction: rtl;
-  z-index: 100;
-  }
-  .mat-form-field{
-    text-align: right!important;
-  }
-.example-full-width{
-  width: 385px;
+.login-full-width{
+  width: 30%;
   margin: auto;
 }
 .mat-card-header{
   display: block;
 }
 
-.mat-card-actions{
-  button{
-    width: 40%;
-    font-size: 24px;
-    padding: 10px;
+  .login-button{
+    width: 70%;
   }
+  .sign-up-button{
+    width: 24%;
+  }
+  .btn{
+    font-size: 18px;
+    padding: 1%;
+    margin: 10% 1%;
+  }
+
+  .btns{
+    width: 20%;
+    margin: auto;
+  }
+
+
+.mat-form-field{
+  width:85%!important;
 }
 
-.login-card::ng-deep .mat-tab-body{
-  height: 50vh;
-  padding-top:24px;
-  table{
-    margin: 45px auto!important;
-  }
-}
-.login-card::ng-deep .mat-tab-label{
-  min-width: 50%!important;
-  font-size: 24px!important;
-  height: 76px!important;
-}
