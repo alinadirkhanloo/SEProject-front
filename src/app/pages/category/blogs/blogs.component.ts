@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from 'src/app/services/shared-data.service';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -12,12 +13,13 @@ export class BlogsComponent implements OnInit {
   checked = false;
   disabled = false;
   cat_name: string;
-  constructor(private sharedata: SharedDataService) { }
+  constructor(private sharedata: SharedDataService,private api:ApiService) { }
 
   ngOnInit() {
     this.sharedata.getCategory().subscribe(res => {
       this.cat_name = res;
     });
+    // this.api.getCategory
   }
 
   test() {

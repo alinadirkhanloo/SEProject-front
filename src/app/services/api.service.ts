@@ -22,7 +22,7 @@ export class ApiService {
   }
 
   getAllMainCategory() {
-    return this.http.get<Category[]>(`http://95.216.12.8:91/api/v1/Categories/GetAllMainCat`);
+    return this.http.get<string[]>(`http://95.216.12.8:91/api/v1/Categories/GetAllMainCat`);
   }
 
   getGetAllByCatId(id: string) {

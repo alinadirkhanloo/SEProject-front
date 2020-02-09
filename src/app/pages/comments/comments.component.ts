@@ -15,19 +15,25 @@ export class CommentsComponent implements OnInit {
       text:"بسیار عالی بود استفاده کردیم",
       userFullName:"علی ندیرخانلو",
       time:"1377/11/18",
-      userId:1
+      userId:1,
+      postId:1,
+      id:1
     },
     {
       text:"بسیار عالی بود استفاده کردیم",
       userFullName:"علی ندیرخانلو",
       time:"1377/11/18",
-      userId:2
+      userId:2,
+      postId:1,
+      id:2
     },
     {
       text:"بسیار عالی بود استفاده کردیم",
       userFullName:"علی ندیرخانلو",
       time:"1377/11/18",
-      userId:3
+      userId:3,
+      postId:1,
+      id:3
     }
   ]
   }
