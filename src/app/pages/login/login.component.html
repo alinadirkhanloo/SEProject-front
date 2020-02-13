@@ -33,7 +33,10 @@
         </tr>
       </table>
       <div class="btns">
-        <button mat-raised-button class="btn login-button w3-green w3-animate-right">ورود</button>
+        <button mat-raised-button class="btn login-button w3-green w3-animate-right">ورود
+          <span><mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+          </span>
+        </button>
         <button mat-raised-button class="btn sign-up-button w3-red w3-animate-left" (click)="register()">ثبت
           نام</button>
       </div>

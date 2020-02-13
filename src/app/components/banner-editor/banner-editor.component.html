@@ -3,17 +3,16 @@
 
     <mat-card class="card w3-animate-left">
       <mat-form-field class="banner-full-width w3-margin-bottom w3-margin-top w3-padding ">
-        <input matInput formControlName="title" placeholder="عنوان را وارد نمایید..." class="w3-xxlarge">
+        <input matInput formControlName="title" placeholder="عنوان را وارد نمایید..." class="w3-xlarge">
       </mat-form-field>
     </mat-card>
 
-    <mat-card class="card w3-animate-right">
+    <!-- <mat-card class="card w3-animate-right">
       <mat-form-field class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding">
-        <!--<textarea matInput class="sum-txtarea w3-large w3-animate-left" placeholder="خلاصه را وارد نمایید" type="text"></textarea>-->
         <textarea matInput formControlName="sumery" Name="sumery" class="banner-textarea w3-large "
           [placeholder]="'خلاصه را وارد نمایید...'" type="text"></textarea>
       </mat-form-field>
-    </mat-card>
+    </mat-card> -->
 
     <mat-card class="card w3-animate-left">
       <mat-form-field
@@ -23,7 +22,7 @@
       </mat-form-field>
     </mat-card>
 
-    <mat-card class="card w3-animate-right">
+    <!-- <mat-card class="card w3-animate-right">
       <mat-form-field class="example-chip-list  banner-full-width w3-margin-bottom w3-margin-top w3-padding">
         <mat-chip-list #chipList aria-label="Tag">
           <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
@@ -40,7 +39,7 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </mat-card>
+    </mat-card> -->
 
     <mat-card>
           <div class="w3-row w3-margin-right">
@@ -64,6 +63,8 @@
                     </mat-select>
                   </mat-form-field>
             </div> -->
+
+
             <div class="w3-third w3-right w3-margin">
                 <mat-form-field class="w3-margin-right">
                     <mat-label>نوع آگهی</mat-label>
@@ -80,5 +81,9 @@
     <div class="w3-margin" style="width:90%;">
       <button mat-raised-button type="submit" class="w3-green" style="margin:5% 0 4%;">منتشر کن</button>
     </div>
+    <div class="w3-center">
+      <span class="w3-text-red">{{error}}</span>
+    </div>
   </form>
+
 </div>

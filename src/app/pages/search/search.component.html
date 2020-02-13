@@ -2,13 +2,14 @@
   <div class="w3-container">
     <div class="w3-card w3-white w3-round w3-container" style="width:40%;margin:auto">
           <div class="w3-container w3-margin">
-              <form class="example-form">
+              <form [formGroup]="searchForm" (ngSubmit)="search()" class="example-form">
                   <mat-form-field class="example-full-width">
                     <!-- <mat-label>Favorite food</mat-label> -->
-                    <input matInput placeholder="عبارت مورد نظر را وارد نمایید...">
+                    <input formControlName="query" name="query" matInput placeholder="عبارت مورد نظر را وارد نمایید..." required>
                   </mat-form-field>
                   <button mat-button class="w3-green w3-left search-btn"><i class="fa fa-search"></i></button>
                 </form>
+                <p class="w3-text-red">{{error}}</p>
           </div>
     </div>
   </div>

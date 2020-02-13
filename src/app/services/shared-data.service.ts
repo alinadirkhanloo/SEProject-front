@@ -27,20 +27,23 @@ export class SharedDataService {
   public follower: Follower;
   public favor: Favorite;
   public employe: Employe;
+
+  public currentUser: BehaviorSubject<User>;
   constructor() {
     this.isLoggedIn = new BehaviorSubject(false);
     this.category = new BehaviorSubject('');
-    // this.faceUser=new User
-    this.getCommentInf();
-    this.getFollowersInf();
-    // this.favor = this.getFavoriteInf(1);
-    this.getEmployeInf();
-    this.post = this.getPostInf(1);
-    this.getUserInf();
-    this.posts = new BehaviorSubject([this.getPostInf(2), this.getPostInf(3), this.getPostInf(4), this.getPostInf(5)]);
-    this.cats = new BehaviorSubject([this.cat, this.cat, this.cat, this.cat, this.cat]);
-    this.employes = new BehaviorSubject([this.employe, this.employe, this.employe, this.employe, this.employe]);
-    this.user = new BehaviorSubject(this.faceUser);
+    this.currentUser = new BehaviorSubject<User>(null);
+    // // this.faceUser=new User
+    // this.getCommentInf();
+    // this.getFollowersInf();
+    // // this.favor = this.getFavoriteInf(1);
+    // this.getEmployeInf();
+    // this.post = this.getPostInf(1);
+    // this.getUserInf();
+    // this.posts = new BehaviorSubject([this.getPostInf(2), this.getPostInf(3), this.getPostInf(4), this.getPostInf(5)]);
+    // this.cats = new BehaviorSubject([this.cat, this.cat, this.cat, this.cat, this.cat]);
+    // this.employes = new BehaviorSubject([this.employe, this.employe, this.employe, this.employe, this.employe]);
+    this.user = new BehaviorSubject(null);
   }
 
   getUserInf() {
@@ -84,7 +87,7 @@ export class SharedDataService {
       userId: 1,
       time: "۱۰ دقیقه",
       id: 1,
-      userFullName:''
+      userFullName: ''
     }
   }
   getFollowersInf() {
@@ -141,4 +144,12 @@ export class SharedDataService {
     return this.category.asObservable();
   }
 
+  setcurrentUserValue(user: User) {
+    const us: User = user;
+    this.currentUser.next(us);
+    console.log(this.currentUser);
+  }
+  getcurrentUserValue() {
+    return this.currentUser.asObservable();
+  }
 }

@@ -8,6 +8,9 @@ import { startWith, map } from 'rxjs/operators';
 import { TextSelectEvent } from '../blog/text-select.directive';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedDataService } from 'src/app/services/shared-data.service';
+import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
+import { ApiService } from 'src/app/services/api.service';
+import { Post } from 'src/app/model/post.model';
 
 
 interface SelectionRectangle {
@@ -16,36 +19,38 @@ interface SelectionRectangle {
   width: number;
   height: number;
 }
-
+interface Cat {
+  value: number, viewValue: string
+}
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class EditorComponent{
+export class EditorComponent {
   editorConfig: AngularEditorConfig = {
     editable: true,
-      spellcheck: true,
-      height: 'auto',
-      minHeight: '0',
-      maxHeight: 'auto',
-      width: 'auto',
-      minWidth: '0',
-      translate: 'yes',
-      enableToolbar: true,
-      showToolbar: true,
-      placeholder: '',
-      defaultParagraphSeparator: '',
-      defaultFontName: '',
-      defaultFontSize: '',
-      fonts: [
-        {class: 'arial', name: 'Arial'},
-        {class: 'times-new-roman', name: 'Times New Roman'},
-        {class: 'calibri', name: 'Calibri'},
-        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-      ],
-      customClasses: [
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: '',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ],
+    customClasses: [
       {
         name: 'quote',
         class: 'quote',
@@ -65,9 +70,9 @@ export class EditorComponent{
     toolbarPosition: 'top',
     toolbarHiddenButtons: [
       ['bold', 'italic'],
-      ['fontSize']
+      ['fontSize'], ['font']
     ]
-};
+  };
   visible = true;
   selectable = true;
   removable = true;
@@ -77,17 +82,24 @@ export class EditorComponent{
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  panelOpenState = false;
+  bannerForm: FormGroup;
 
+
+
+  categories: Cat[] = [];
   public hostRectangle: SelectionRectangle | null;
   private selectedText: string;
-
+  error = '';
   blogForm: FormGroup;
-  @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
+  post: Post;
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private api: ApiService) {
     this.hostRectangle = null;
-    this.selectedText = "";
+    this.selectedText = '';
+    this.post = null;
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
@@ -95,20 +107,53 @@ export class EditorComponent{
 
   ngOnInit() {
     this.blogForm = this.formBuilder.group({
-      title: ['', [Validators.required]],
-      sumery: ['', [Validators.required]],
-      htmlContent: ['', [Validators.required]],
-      tags:[[]],
+      title: new FormControl('', [Validators.required]),
+      shortDescription: new FormControl('', [Validators.required]),
+      htmlContent: new FormControl('', [Validators.required]),
+      category: new FormControl(null, [Validators.required]),
+      timeToRead: new FormControl('', [Validators.required]),
+      image: new FormControl('', []),
+      // tags: [[]],
     });
+    this.api.getAllCategory().subscribe(
+      res => {
+        // tslint:disable-next-line: forin
+        for (const item in res.data) {
+          this.categories.push({ value: res.data[item].id, viewValue: res.data[item].name });
+        }
+      });
   }
+  // convenience getter for easy access to form fields
+  get f() { return this.blogForm.controls; }
 
   onSubmit() {
     if (this.blogForm.invalid) {
       return;
     }
-    // this.sharedData.setLoggedIn(true);
-    this.blogForm.value.tags=this.tags;
+    // this.blogForm.value.tags = this.tags;
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.blogForm.value, null, 4));
+    this.post = {
+      title: this.f.title.value,
+      text: this.f.htmlContent.value,
+      shortDescription: this.f.shortDescription.value,
+      timeToRead: this.f.timeToRead.value,
+      image: this.f.image.value,
+      categoryId: this.f.category.value
+    };
+    this.api.createPosts(this.post).subscribe(
+      data => {
+        if (data.isSuccess) {
+          console.log('post data=', data);
+          alert('SUCCESS!! :-)\n\n' + data.message);
+        } else {
+          console.log(data);
+          this.error = data.message;
+        }
+      },
+      error => {
+        console.log('error', error);
+        this.error = error.error.Message;
+      });
   }
 
   add(event: MatChipInputEvent): void {
@@ -195,7 +240,7 @@ export class EditorComponent{
 
   }
 
-s
+  s
 
 
 }

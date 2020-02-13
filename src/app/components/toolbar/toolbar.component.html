@@ -5,15 +5,15 @@
 
     <div class="action-btns" dir="rtl">
         <!-- *ngIf="loginStatus()" -->
-      <img  src="../../assets/imgs/prof-img.jpg" [matMenuTriggerFor]="menu1" (mouseenter)="openMyMenu()"
+      <img *ngIf="loginStatus()" src="../../../assets/imgs/avatar.png" [matMenuTriggerFor]="menu1"
         class="w3-margin-right w3-margin-left w3-right w3-round-xxlarge" style="width:40px;height:40px;"
         [matMenuTriggerFor]="menu">
 
       <mat-menu #menu1="matMenu" overlapTrigger="false">
-        <span (mouseleave)="closeMyMenu()">
+        <span>
           <button mat-menu-item [routerLink]="['profile']">پروفایل</button>
           <button mat-menu-item [routerLink]="['editor']">پست جدید</button>
-          <button mat-menu-item [routerLink]="['login']">خروج</button>
+          <button mat-menu-item (click)="logout()" [routerLink]="['login']">خروج</button>
         </span>
       </mat-menu>
 
@@ -33,7 +33,7 @@
       </mat-menu>
       <button mat-button class="btns" [routerLink]="['search']">جستوجو</button>
       <button mat-button class="btns" [routerLink]="['category']">دسته بندی موضوعات</button>
-      <button mat-button class="w3-green" [routerLink]="['login']">ورود/ثبت نام</button>
+      <button mat-button *ngIf="!loginStatus()" class="w3-green" [routerLink]="['login']">ورود/ثبت نام</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

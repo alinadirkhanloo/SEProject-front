@@ -37,3 +37,14 @@ i{
   width:85%!important;
 }
 
+::ng-deep .mat-spinner svg{
+  width: 25px!important;
+  height: 25px!important;
+}
+
+.mat-spinner{
+  width: 25px!important;
+  height: 25px!important;
+  position: absolute;
+  top: 30%;
+}

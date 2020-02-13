@@ -12,13 +12,12 @@ import { ApiService } from 'src/app/services/api.service';
 export class CategoryComponent implements OnInit {
   color = 'green';
   constructor(private router: Router, private sharedata: SharedDataService, private api: ApiService) { }
-  cat = [
-    'Css', 'Css3', 'Javascript', 'Node', 'Php', 'Python', 'R', 'React', 'Montressocss'
-  ]
+  mainCat = [];
+  subCat=[];
   ngOnInit() {
     this.api.getAllMainCategory()
       .subscribe(data => {
-        this.cat = data;
+        this.mainCat = data;
       });
   }
 
