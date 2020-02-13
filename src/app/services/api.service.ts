@@ -25,7 +25,11 @@ export class ApiService {
   }
 
   getAllMainCategory() {
-    return this.http.get<string[]>(`http://95.216.12.8:91/api/v1/Categories/GetAllMainCat`);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Categories/GetAllMainCat`);
+  }
+
+  getAllMainCategoryWithSub() {
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Categories/GetCategoryWithSub`);
   }
 
   getGetAllByCatId(id: string) {
@@ -70,6 +74,7 @@ export class ApiService {
         params: new HttpParams().set('id', id)
       });
   }
+
   updateComment(id: string, comment: Comment) {
     return this.http.put<Comment>(`http://95.216.12.8:91/api/v1/Comments/Update`, comment,
       {
@@ -88,11 +93,11 @@ export class ApiService {
   // Employes
 
   getAllEmployes() {
-    return this.http.get<Employe[]>(`http://95.216.12.8:91/api/v1/Employs/Get`);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Employs/Get`);
   }
 
   getEmployeByID(id: number) {
-    return this.http.get<Employe>(`http://95.216.12.8:91/api/v1/Employs/Get/` + id);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Employs/Get/` + id);
   }
 
   updateEmploye(id: string, employe: Employe) {
@@ -103,7 +108,7 @@ export class ApiService {
   }
 
   DeleteEmploye(id: number) {
-    return this.http.delete<Employe>(`http://95.216.12.8:91/api/v1/Employs/Delete/` + id);
+    return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Employs/Delete/` + id);
   }
 
   createEmploye(employe: Employe) {
@@ -116,15 +121,15 @@ export class ApiService {
   // Favorites
 
   getAllFavorites() {
-    return this.http.get<Favorite[]>(`http://95.216.12.8:91/api/v1/Favorites/Get`);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Favorites/Get`);
   }
 
   DeleteFavorite(id: number) {
-    return this.http.delete<Favorite>(`http://95.216.12.8:91/api/v1/Favorites/Delete/` + id);
+    return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Favorites/Delete/` + id);
   }
 
   createFavorite(favorite: Favorite) {
-    return this.http.post<Favorite>(`http://95.216.12.8:91/api/v1/Favorites/Create`, favorite);
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Favorites/Create`, favorite);
   }
 
 
@@ -135,22 +140,22 @@ export class ApiService {
   }
 
   DeleteFollower(id: number) {
-    return this.http.delete<Follower>(`http://95.216.12.8:91/api/v1/Followers/Delete/` + id);
+    return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Followers/Delete/` + id);
   }
 
   createFollower(follower: Follower) {
-    return this.http.post<Follower>(`http://95.216.12.8:91/api/v1/Followers/Create`, follower);
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Followers/Create`, follower);
   }
 
 
   // Posts
 
   getAllPosts() {
-    return this.http.get<Post[]>(`http://95.216.12.8:91/api/v1/Posts/Get`);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/Get`);
   }
 
   getPostByID(id: number) {
-    return this.http.get<Post>(`http://95.216.12.8:91/api/v1/Posts/Get/` + id);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/Get/` + id);
   }
 
   getAllPostsByCatId(id: string, to: string) {
@@ -160,17 +165,17 @@ export class ApiService {
         to: to,
       }
     });
-    return this.http.get<Post>(`http://95.216.12.8:91/api/v1/Posts/GetAllByCatId`, { params });
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetAllByCatId`, { params });
   }
 
   getSimilarPost(id: string) {
-    return this.http.get<Post>(`http://95.216.12.8:91/api/v1/Posts/GetSimilar/`, {
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetSimilar/`, {
       params: new HttpParams().set('id', id)
     });
   }
 
   getPostByUserID(id: string) {
-    return this.http.get<Post>(`http://95.216.12.8:91/api/v1/Posts/GetByUserId`, {
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetByUserId`, {
       params: new HttpParams().set('id', id)
     });
   }
@@ -182,7 +187,7 @@ export class ApiService {
         count: count,
       }
     });
-    return this.http.get<Post>(`http://95.216.12.8:91/api/v1/Posts/GetCustom`, { params });
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetCustom`, { params });
   }
 
   searchPost(str: string) {
@@ -192,14 +197,14 @@ export class ApiService {
   }
 
   updatePost(id: string, post: Post) {
-    return this.http.put<Post>(`http://95.216.12.8:91/api/v1/Posts/Update`, post,
+    return this.http.put<any>(`http://95.216.12.8:91/api/v1/Posts/Update`, post,
       {
         params: new HttpParams().set('id', id)
       });
   }
 
   DeletePost(id: number) {
-    return this.http.delete<Post>(`http://95.216.12.8:91/api/v1/Posts/Delete/` + id);
+    return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Posts/Delete/` + id);
   }
 
   createPosts(post: Post) {

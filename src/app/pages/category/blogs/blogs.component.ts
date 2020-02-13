@@ -12,18 +12,23 @@ export class BlogsComponent implements OnInit {
   color = 'warn';
   checked = false;
   disabled = false;
-  cat_name: string;
+  catName: string;
+  catId=null;
   constructor(private sharedata: SharedDataService,private api:ApiService) { }
 
   ngOnInit() {
-    this.sharedata.getCategory().subscribe(res => {
-      this.cat_name = res;
+    this.sharedata.getCategoryName().subscribe(res => {
+      this.catName = res;
     });
+    this.sharedata.getCategoryId().subscribe(res => {
+      this.catId = res;
+    });
+    console.log(this.catName,this.catId)
     // this.api.getCategory
   }
 
   test() {
-    console.log(this.cat_name);
+    console.log(this.catName);
   }
 
 }

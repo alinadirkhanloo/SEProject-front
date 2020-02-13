@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { isDateValid } from 'ngx-bootstrap';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ApiService } from 'src/app/services/api.service';
-import { currentId } from 'async_hooks';
 
 @Component({
   selector: 'app-profile',
@@ -20,9 +19,9 @@ export class ProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private api: ApiService) {
-      console.log('dd',localStorage.getItem('currentUser'));
-      console.log('ll',JSON.parse(localStorage.getItem('currentUser')));
-      this.faceUser=JSON.parse(localStorage.getItem('currentUser'));
+    console.log('dd', localStorage.getItem('currentUser'));
+    console.log('ll', JSON.parse(localStorage.getItem('currentUser')));
+    this.faceUser = JSON.parse(localStorage.getItem('currentUser'));
 
   }
 
@@ -38,7 +37,38 @@ export class ProfileComponent implements OnInit {
   }
 
   edit() {
-    console.log(this.proForm.invalid)
+    console.log(this.proForm.invalid);
   }
-
+  unfollow(id) {
+    console.log('unfollow');
+    this.api.DeleteFollower(id).subscribe(res => {
+      if (res.isSuccess) {
+        console.log('deleted');
+      }
+    });
+  }
+  deletePost(id) {
+    console.log('delete');
+    this.api.DeletePost(id).subscribe(res => {
+      if (res.isSuccess) {
+        console.log('deleted');
+      }
+    });
+  }
+  deleteFav(id) {
+    console.log('delete');
+    this.api.DeleteFavorite(id).subscribe(res => {
+      if (res.isSuccess) {
+        console.log('deleted');
+      }
+    });
+  }
+  deleteBanner(id) {
+    console.log('delete');
+    this.api.DeleteEmploye(id).subscribe(res => {
+      if (res.isSuccess) {
+        console.log('deleted');
+      }
+    });
+  }
 }

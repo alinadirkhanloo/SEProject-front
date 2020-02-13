@@ -13,17 +13,18 @@ export class CategoryComponent implements OnInit {
   color = 'green';
   constructor(private router: Router, private sharedata: SharedDataService, private api: ApiService) { }
   mainCat = [];
-  subCat=[];
+  subCat = [];
   ngOnInit() {
-    this.api.getAllMainCategory()
-      .subscribe(data => {
-        this.mainCat = data;
+    this.api.getAllMainCategoryWithSub()
+      .subscribe(res => {
+        console.log('cat', res);
+        this.mainCat = res.data;
       });
   }
 
-  get_blogs(cat) {
-    console.log(cat);
-    this.sharedata.setCategory(cat);
-    this.router.navigate(['blogs/' + cat]);
+  get_blogs(name, id) {
+    console.log(name, id);
+    this.sharedata.setCategory(name,id);
+    this.router.navigate(['blogs/' + name]);
   }
 }

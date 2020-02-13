@@ -11,6 +11,7 @@ import { SharedDataService } from 'src/app/services/shared-data.service';
 import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 import { ApiService } from 'src/app/services/api.service';
 import { Post } from 'src/app/model/post.model';
+import { Router } from '@angular/router';
 
 
 interface SelectionRectangle {
@@ -96,7 +97,7 @@ export class EditorComponent {
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private formBuilder: FormBuilder, private api: ApiService) {
+  constructor(private formBuilder: FormBuilder, private api: ApiService, private router: Router) {
     this.hostRectangle = null;
     this.selectedText = '';
     this.post = null;
@@ -128,6 +129,19 @@ export class EditorComponent {
 
   onSubmit() {
     if (this.blogForm.invalid) {
+      const i=document.getElementById('title-fa');
+      if (this.f.title.invalid) {
+
+        i.style.color='red';
+        // console.log(document.getElementById('title-fa').className);
+      } else {
+        i.style.color='black';
+      }
+      if (this.f.shortDescription.invalid) {
+        document.getElementById('text-fa').style.color='red';
+      } else {
+        document.getElementById('text-fa').style.color='black';
+      }
       return;
     }
     // this.blogForm.value.tags = this.tags;
@@ -145,6 +159,7 @@ export class EditorComponent {
         if (data.isSuccess) {
           console.log('post data=', data);
           alert('SUCCESS!! :-)\n\n' + data.message);
+          this.router.navigate(['/home']);
         } else {
           console.log(data);
           this.error = data.message;

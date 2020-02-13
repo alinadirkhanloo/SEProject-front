@@ -16,8 +16,6 @@ export class ToolbarComponent implements OnInit {
 
   loginStatus() {
     return this.auth.getcurrentUserTokenValue();
-
-
   }
   logout() {
     this.shared.setLoggedIn(true);

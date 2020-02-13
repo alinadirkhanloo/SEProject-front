@@ -9,9 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedDataService } from 'src/app/services/shared-data.service';
 import { Employe } from 'src/app/model/employe.model';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 interface Type {
-  value: string, viewValue: string
+  value: number, viewValue: string
 }
 
 @Component({
@@ -40,12 +41,12 @@ export class BannerEditorComponent implements OnInit {
 
 
   types: Type[] = [
-    { value: 'تبلیغات', viewValue: 'تبلیغات' },
-    { value: 'اطلاعیه', viewValue: 'اطلاعیه' },
-    { value: 'استخدامی', viewValue: 'استخدامی' }
+    { value: 0, viewValue: 'تبلیغات' },
+    { value: 1, viewValue: 'اطلاعیه' },
+    { value: 2, viewValue: 'استخدامی' }
   ];
   employe: Employe;
-  constructor(private formBuilder: FormBuilder, private api: ApiService) {
+  constructor(private formBuilder: FormBuilder, private api: ApiService, private router: Router) {
     this.employe = null;
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -57,7 +58,7 @@ export class BannerEditorComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       // sumery: new FormControl('', [Validators.required]),
       text: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
+      type: new FormControl(null, [Validators.required]),
       // tags: [[]],
     });
   }
@@ -74,13 +75,15 @@ export class BannerEditorComponent implements OnInit {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.bannerForm.value, null, 4));
     this.employe = {
       text: this.f.text.value,
-      title: this.f.title.value
+      title: this.f.title.value,
+      type:this.f.type.value
     };
     this.api.createEmploye(this.employe).subscribe(
       data => {
         if (data.isSuccess) {
           console.log('emp data=', data);
           alert('SUCCESS!! :-)\n\n' + data.message);
+          this.router.navigate(['/banners']);
         } else {
           console.log(data);
           this.error = data.message;

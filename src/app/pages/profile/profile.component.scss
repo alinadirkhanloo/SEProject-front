@@ -7,7 +7,7 @@ i{
 
 }
 .posts ::ng-deep .mat-tab-label{
-  width: 50%;
+  width: 33.33%;
   font-family: vazir!important;
 
 }
@@ -25,4 +25,14 @@ i{
 }
 .cancel-button{
   width: 24%;
+}
+
+.ul-div{
+  overflow: hidden;
+}
+
+.ul-div ul{
+  overflow-y: scroll;
+  height: 240px;
+  margin-left: -5%;
 }
