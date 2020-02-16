@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './pages/login/login.component';
-
+import {SlideshowModule} from 'ng-simple-slideshow';
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -73,6 +73,7 @@ import { BlogsComponent } from './pages/category/blogs/blogs.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { SearchComponent } from './pages/search/search.component';
 import { CommentsComponent } from './pages/comments/comments.component';
+import { FollowingProfComponent } from './pages/profile/following-prof/following-prof.component';
 // import { HttpClientModule} from '@angular/common/http';
 // import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -95,7 +96,8 @@ import { CommentsComponent } from './pages/comments/comments.component';
     BlogsComponent,
     AdminPanelComponent,
     SearchComponent,
-    CommentsComponent
+    CommentsComponent,
+    FollowingProfComponent
   ],
   imports: [
     BrowserModule,
@@ -145,7 +147,7 @@ import { CommentsComponent } from './pages/comments/comments.component';
     BsDatepickerModule,
     HttpClientModule,
     AngularEditorModule,
-
+    SlideshowModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]

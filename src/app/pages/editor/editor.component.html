@@ -8,7 +8,7 @@
       <p> عنوان مقاله را وارد نمایید. حداکثر 300 کاراکتر</p>
       <mat-form-field class="banner-full-width w3-margin-bottom w3-padding ">
         <span><i id="title-fa" class="fa fa-pen w3-right w3-margin-left"></i>
-          <input matInput formControlName="title" Name="title" maxlength="12" class="w3-large"></span>
+          <input matInput formControlName="title" Name="title" maxlength="100" class="w3-xlarge"></span>
       </mat-form-field>
       <div class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding">
         <!-- <textarea matInput class="sum-txtarea w3-large w3-animate-left" placeholder="خلاصه را وارد نمایید" type="text"></textarea> -->
@@ -20,7 +20,7 @@
       <p> خلاصه مقاله را وارد نمایید. حداکثر 700 کاراکتر</p>
       <div class="banner-full-width banner-full-width w3-margin-bottom w3-margin-top w3-padding">
         <span><i id="text-fa" class="fa fa-pen w3-right w3-margin-left"></i>
-          <textarea formControlName="shortDescription" class="sum-txtarea w3-large w3-animate-left" maxlength="10"
+          <textarea formControlName="shortDescription" class="sum-txtarea w3-large w3-animate-left" maxlength="500"
             type="text"></textarea></span>
         <!-- <p contenteditable="true" class="banner-textarea w3-large">خلاصه را وارد نمایید</p> -->
       </div>
@@ -78,7 +78,7 @@
       <angular-editor formControlName="htmlContent" [config]="editorConfig"></angular-editor>
     </mat-card>
 
-    <!-- <mat-card class="card w3-animate-right">
+    <mat-card class="card w3-animate-right">
       <mat-form-field class="example-chip-list  banner-full-width w3-margin-bottom w3-margin-top w3-padding">
         <mat-chip-list #chipList aria-label="Tag">
           <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
@@ -95,7 +95,7 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </mat-card> -->
+    </mat-card>
 
     <mat-card class="card">
       <div class="w3-row w3-margin-right">
@@ -109,9 +109,9 @@
                   </mat-select>
                 </mat-form-field>
           </div>-->
-        <div class="w3-third w3-center">
+        <!-- <div class="w3-third w3-center">
           <button mat-raised-button color="warn" style="margin: 4% 0;"><i class="fa fa-camera"></i></button>
-        </div>
+        </div> -->
         <div class="w3-third w3-right">
           <mat-form-field>
             <mat-label>زمان مورد نیاز برای مطالعه(دقیقه)</mat-label>

@@ -15,6 +15,11 @@ export class ApiService {
   id: number;
   httpOptions = null;
   constructor(private http: HttpClient, private auth: AuthenticationService) {
+    if (this.auth.getcurrentUserTokenValue()) {
+      this.httpOptions = new HttpHeaders({
+        Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+      });
+    }
   }
 
 
@@ -69,10 +74,7 @@ export class ApiService {
   }
 
   getPostComments(id: string) {
-    return this.http.get<Comment[]>(`http://95.216.12.8:91/api/v1/Comments/GetPostComments`,
-      {
-        params: new HttpParams().set('id', id)
-      });
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Comments/GetPostComments/` + id);
   }
 
   updateComment(id: string, comment: Comment) {
@@ -86,8 +88,12 @@ export class ApiService {
     return this.http.delete<Comment>(`http://95.216.12.8:91/api/v1/Comments/Delete/` + id);
   }
 
-  createComment(comment: Comment) {
-    return this.http.post<Comment>(`http://95.216.12.8:91/api/v1/Comments/Create`, comment);
+  createComment(comment: string, id: number) {
+
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Comments/Create`, {
+      text: comment,
+      postId: id
+    }, { headers: this.httpOptions });
   }
 
   // Employes
@@ -98,6 +104,10 @@ export class ApiService {
 
   getEmployeByID(id: number) {
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Employs/Get/` + id);
+  }
+
+  getEmployeByUserID(id: number) {
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Employs/GetByUserId/` + id);
   }
 
   updateEmploye(id: string, employe: Employe) {
@@ -111,40 +121,45 @@ export class ApiService {
     return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Employs/Delete/` + id);
   }
 
-  createEmploye(employe: Employe) {
-    this.httpOptions = new HttpHeaders({
-      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
-    });
-    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Employs/Create`, employe, { headers: this.httpOptions });
+  createEmploye(banTitle: string, banText: string, banType: number) {
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Employs/Create`, {
+      title: banTitle,
+      text: banText,
+      type: banType
+    }, { headers: this.httpOptions });
   }
 
   // Favorites
 
   getAllFavorites() {
-    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Favorites/Get`);
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Favorites/Get`, { headers: this.httpOptions });
   }
 
   DeleteFavorite(id: number) {
     return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Favorites/Delete/` + id);
   }
 
-  createFavorite(favorite: Favorite) {
-    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Favorites/Create`, favorite);
+  createFavorite(id: number) {
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Favorites/Create/`, { postId: id }, { headers: this.httpOptions });
   }
 
 
   // Followers
 
   getAllFollowers() {
-    return this.http.get<Follower[]>(`http://95.216.12.8:91/api/v1/Followers/Get`);
+
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Followers/Get`, { headers: this.httpOptions });
   }
 
   DeleteFollower(id: number) {
     return this.http.delete<any>(`http://95.216.12.8:91/api/v1/Followers/Delete/` + id);
   }
 
-  createFollower(follower: Follower) {
-    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Followers/Create`, follower);
+  createFollower(id) {
+
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Followers/Create`, {
+      followerId: String(id),
+    }, { headers: this.httpOptions });
   }
 
 
@@ -158,33 +173,29 @@ export class ApiService {
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/Get/` + id);
   }
 
-  getAllPostsByCatId(id: string, to: string) {
+  getAllPostsByCatId(id: number, to: number) {
     const params = new HttpParams({
       fromObject: {
-        id: id,
-        to: to,
+        to: String(to),
       }
     });
-    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetAllByCatId`, { params });
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetAllByCatId/` + id, { params });
   }
 
   getSimilarPost(id: string) {
-    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetSimilar/`, {
-      params: new HttpParams().set('id', id)
-    });
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetSimilar/` + id);
   }
 
-  getPostByUserID(id: string) {
-    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetByUserId`, {
-      params: new HttpParams().set('id', id)
-    });
+  getPostByUserID(id: number) {
+
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetByUserId/` + id);
   }
 
-  getCustomPost(type: string, count: string) {
+  getCustomPost(type: number, count: number) {
     const params = new HttpParams({
       fromObject: {
-        type: type,
-        count: count,
+        type: String(type),
+        count: String(count),
       }
     });
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetCustom`, { params });
@@ -225,9 +236,7 @@ export class ApiService {
   }
 
   getUserInfo() {
-    this.httpOptions = new HttpHeaders({
-      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
-    });
+
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Users/GetUserInfo`, { headers: this.httpOptions });
   }
 
@@ -251,5 +260,16 @@ export class ApiService {
     return this.http.post<any>(`http://95.216.12.8:91/api/v1/Users/Create`, user, { headers: getHeaders });
   }
 
+
+  getAllBanners() {
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Banners/Get`);
+  }
+
+  createTag(id: number, tag: string[]) {
+    return this.http.post<any>(`http://95.216.12.8:91/api/v1/Tags/AddTag`, {
+      postId:id,tagName:tag
+    }, { headers: this.httpOptions });
+
+  }
 
 }

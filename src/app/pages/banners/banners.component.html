@@ -13,7 +13,10 @@
           <!-- <img src="../../../assets/imgs/it.jpg" alt="Norway" style="width:100%"> -->
           <h3>{{ban.title}}</h3>
           <br/>
-          <p class="w3-margin">{{ban.text}}</p>
+          <div>
+              <p style="    overflow-wrap: break-word; word-break: break-all;" class="w3-margin">{{ban.text}}</p>
+          </div>
+
           <mat-divider class="w3-margin-top"></mat-divider>
           <div class="w3-margin-right w3-margin-top w3-right" style="width: 100%;">
             <p><i class="fa fa-user w3-margin-left"></i>{{ban.userFullName}}</p>

@@ -73,12 +73,7 @@ export class BannerEditorComponent implements OnInit {
     // this.sharedData.setLoggedIn(true);
     // this.bannerForm.value.tags = this.tags;
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.bannerForm.value, null, 4));
-    this.employe = {
-      text: this.f.text.value,
-      title: this.f.title.value,
-      type:this.f.type.value
-    };
-    this.api.createEmploye(this.employe).subscribe(
+    this.api.createEmploye(this.f.title.value,this.f.text.value,this.f.type.value).subscribe(
       data => {
         if (data.isSuccess) {
           console.log('emp data=', data);

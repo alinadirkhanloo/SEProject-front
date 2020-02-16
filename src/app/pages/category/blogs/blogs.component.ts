@@ -13,9 +13,9 @@ export class BlogsComponent implements OnInit {
   checked = false;
   disabled = false;
   catName: string;
-  catId=null;
-  constructor(private sharedata: SharedDataService,private api:ApiService) { }
-
+  catId = null;
+  constructor(private sharedata: SharedDataService, private api: ApiService) { }
+  posts = [];
   ngOnInit() {
     this.sharedata.getCategoryName().subscribe(res => {
       this.catName = res;
@@ -23,8 +23,10 @@ export class BlogsComponent implements OnInit {
     this.sharedata.getCategoryId().subscribe(res => {
       this.catId = res;
     });
-    console.log(this.catName,this.catId)
-    // this.api.getCategory
+    console.log(this.catName, this.catId)
+    this.api.getAllPostsByCatId(this.catId, 10).subscribe(res => {
+      this.posts = res.data;
+    });
   }
 
   test() {

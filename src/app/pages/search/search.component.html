@@ -1,40 +1,43 @@
 <div class="w3-margin w3-container" dir="rtl" style="min-height: 550px;">
   <div class="w3-container">
     <div class="w3-card w3-white w3-round w3-container" style="width:40%;margin:auto">
-          <div class="w3-container w3-margin">
-              <form [formGroup]="searchForm" (ngSubmit)="search()" class="example-form">
-                  <mat-form-field class="example-full-width">
-                    <!-- <mat-label>Favorite food</mat-label> -->
-                    <input formControlName="query" name="query" matInput placeholder="عبارت مورد نظر را وارد نمایید..." required>
-                  </mat-form-field>
-                  <button mat-button class="w3-green w3-left search-btn"><i class="fa fa-search"></i></button>
-                </form>
-                <p class="w3-text-red">{{error}}</p>
-          </div>
+      <div class="w3-container w3-margin">
+        <form [formGroup]="searchForm" (ngSubmit)="search()" class="example-form">
+          <mat-form-field class="example-full-width">
+            <!-- <mat-label>Favorite food</mat-label> -->
+            <input formControlName="query" name="query" matInput placeholder="عبارت مورد نظر را وارد نمایید..."
+              required>
+          </mat-form-field>
+          <button mat-button class="w3-green w3-left search-btn"><i class="fa fa-search"></i></button>
+        </form>
+        <p class="w3-text-red">{{error}}</p>
+      </div>
     </div>
   </div>
 
-<!-- result of posts -->
+  <!-- result of posts -->
   <div class="w3-container" style="width:90%;margin:auto">
-    <div  *ngFor="let item of [1,2,3,4,5,5]" class="w3-container w3-half w3-animate-bottom"><br>
+    <div *ngFor="let item of posts" class="w3-container w3-half w3-animate-bottom"><br>
       <div class="w3-round w3-card w3-white" style="padding: 32px;">
-      <!-- <span class="w3-left w3-opacity">1 min</span> -->
-      <p class="w3-left">1 دقیقه<br/> <span class="w3-opacity">1398/08/24</span></p>
-      <h3>یادگیری ماشین</h3><br>
-      <p>در این آموزش ویدئویی، یکی از محبوب ترین و پرکاربردترین علوم حوزه هوش مصنوعی، یعنی یادگیری عمیق (Deep
-        learning)، معرفی شده است. در این آموزش، علاوه بر آشنایی با مبانی تئوری یادگیری عمیق، تکنیک ها و مدل های مختلف
-        آموزش شبکه های عصبی عمیق، قادر خواهید بود تا در عمل نیز به طراحی، پیاده سازی و آموزش این شبکه ها بپردازید.
-        همچنین در این آموزش به کاربردهای آکادمیک و تحقیقاتی و هم به کاربردهای عملی یادگیری عمیق توجه شده است. در این
-        آموزش، تمرکز بر روی محبوب ترین مدل و کاربرد یادگیری عمیق یعنی مدل شبکه عصبی کانولوشنی با کاربرد در بینایی
-        ماشین و پردازش تصویر خواهد بود.</p>
-      <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom">
+        <!-- <span class="w3-left w3-opacity">1 min</span> -->
+        <p class="w3-left">{{item.timeToRead}}دقیقه, <span class="w3-opacity">{{item.time}}</span></p>
+        <div class="w3-container">
+          <h3>{{item.title}}</h3>
+          <p>{{item.authorFullName}}</p><br>
+          <p class="w3-margin-bottom">{{item.shortDescription}}</p>
+          <div class="w3-margin">
+            <img src="{{item.image}}" style="width:100%;height: 500px;" class="w3-margin-bottom w3-round w3-card">
+          </div>
 
-      <button type="button" class="w3-button w3-theme-d1"><i class="fa fa-thumbs-up"></i>
-        100</button>
-      <button type="button" class="w3-button w3-theme-d2"><i
-          class="fa fa-star w3-margin-left"></i>4.5</button>
-      <span><button mat-button class="w3-green w3-left">بیشتر</button></span>
-    </div>
+          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-eye w3-margin-left"></i>
+            {{item.view}}</button>
+          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+              class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
+          <span><button mat-raised-button class="w3-left w3-green w3-border"
+              (click)="getPost(item.id)">بیشتر</button></span>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

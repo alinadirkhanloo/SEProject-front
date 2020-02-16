@@ -1,154 +1,162 @@
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" dir="rtl" style="max-width:1400px;">
+<div dir="rtl">
+  <header>
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-    <!-- Right Column -->
-    <div class="w3-third w3-right">
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="../../assets/imgs/prof-img.jpg" style="width:100%" alt="Avatar">
-          <div class="w3-display-bottomright w3-container w3-white" style="width:100%">
-            <h2>{{faceUser.fullName}}</h2>
-          </div>
+    <div class="container">
+
+      <div class="profile">
+
+
+        <div class="profile-image">
+
+          <img class="w3-card" src="../../assets/imgs/prof-img.jpg" style="width: 150px;" alt="">
+
         </div>
-        <div class="w3-container">
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-green"></i>{{faceUser.email}}</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-green"></i>{{faceUser.phoneNumber}}</p>
-          <p><i class="fa fa-calendar fa-fw w3-margin-right w3-large w3-text-green"></i>{{faceUser.birthday}}</p>
-          <div class="w3-margin-bottom">
-            <button mat-raised-button class="w3-green" onclick="document.getElementById('id01').style.display='block'"
-              style="margin:0 4%;">ویرایش</button>
-          </div>
-          <hr>
-          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-left w3-text-green"></i>دنبال شوندگان</b></p>
-          <br>
-          <div class="ul-div">
-            <ul class="w3-ul w3-hoverable w3-white">
-              <li class="w3-padding-16">
-                <span class="w3-large w3-text-gray"><i class="fa fa-user w3-margin-left w3-text-green"></i>یادگیری
-                  ماشین</span>
-                  <span class="w3-left"><button mat-button class="w3-border" color="warn">دنبال نکردن</button></span>
-                  <br>
-              </li>
-              <li class="w3-padding-16">
-                <span class="w3-large w3-text-gray"><i class="fa fa-user w3-margin-left w3-text-green"></i>یادگیری
-                  ماشین</span>
-                  <span class="w3-left"><button mat-button class="w3-border" color="warn">دنبال نکردن</button></span>
-                  <br>
-              </li>
 
-            </ul>
-          </div>
+        <div class="profile-user-settings">
 
-          <!--<br>-->
+          <h1 class="profile-user-name">{{faceUser.fullName}}</h1>
+
+          <!-- <button class="btn profile-edit-btn">ویرایش</button> -->
+          <!-- <button mat-raised-button class="btn profile-edit-btn w3-green w3-padding"
+            onclick="document.getElementById('id01').style.display='block'">ویرایش</button> -->
+
         </div>
+
+        <div class="profile-stats">
+
+          <ul>
+            <li> پست ها <span class="profile-stat-count">{{this.posts.length}}</span></li>
+            <li> آگهی ها <span class="profile-stat-count">{{this.banners.length}}</span></li>
+            <li *ngIf="showFollowing"> دنبال شوندگان <span class="profile-stat-count">{{this.following.length}}</span>
+            </li>
+          </ul>
+
+        </div>
+
+        <!-- <div class="profile-bio">
+
+          <p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit
+            📷✈️🏕️</p>
+
+        </div> -->
+
       </div>
-      <br>
-      <!-- End Right Column -->
+      <!-- End of profile section -->
+
     </div>
-    <!-- Left Column -->
-    <div class="w3-twothird w3-left">
-      <!--
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>تجربه کاری</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Front End Developer / w3schools.com</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>1398/01/01 - <span>1398/01/01</span></h6>
-          <p>توضیحات</p>
-          <hr>
-        </div>
+    <!-- End of container -->
 
+  </header>
+
+  <div class="w3-content" style="max-width:1400px;">
+    <div class="w3-row">
+      <!-- Right Column -->
+      <div *ngIf="showFollowing" class="w3-third w3-right">
+        <div>
+          <div class="w3-container w3-padding">
+            <h4 class="w3-right w3-margin-top">دنبال شوندگان</h4>
+          </div>
+          <ul class="w3-ul w3-border w3-hoverable ">
+            <li *ngFor="let item of following" class="w3-padding-16">
+              <button mat-button class="w3-left w3-margin-right" (click)="unfollow(item.followerId)">دنبال نکردن</button>
+              <span class="w3-large">{{item.followerFullName}</span><br>
+                </li>
+              </ul>
+            </div>
       </div>
+      <!-- Left Column -->
+      <div class="w3-twothird w3-left">
+          <div class="w3-container posts" style="min-height: 260px;">
+              <mat-tab-group>
+                <mat-tab label="منتشر شده ها">
+                  <div *ngFor="let item of posts" class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                    <!-- <span class="w3-left w3-opacity">1 min</span> -->
+                    <p class="w3-left">{{item.timeToRead}} دقیقه , <span class="w3-opacity">{{item.time}}</span></p>
+                <div class="w3-container">
+                  <h3>{{item.title}}</h3>
+                  <p>{{item.authorFullName}}</p><br>
+                  <p class="w3-margin-bottom">{{item.shortDescription}}</p>
+                  <div class="w3-margin">
+                    <img src="{{item.image}}" style="width:100%;height: 500px;"
+                      class="w3-margin-bottom w3-round w3-card">
+                  </div>
 
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>تحصیلات</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>London Business School</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>1398/01/01 - <span>1398/01/01</span></h6>
-          <p>Master Degree</p>
-          <hr>
+                  <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i
+                      class="fa fa-eye w3-margin-left"></i>
+                    {{item.view}}</button>
+                  <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                      class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
+                  <span><button mat-raised-button class="w3-left w3-green w3-border"
+                      (click)="getPost(item.id)">بیشتر</button></span>
+
+                </div>
         </div>
-      </div>
--->
-      <div class="w3-container posts">
-        <mat-tab-group>
-          <mat-tab label="منتشر شده ها">
-            <div *ngFor="let item of faceUser.posts" class="w3-container w3-card w3-white w3-round w3-margin"><br>
-              <!-- <span class="w3-left w3-opacity">1 min</span> -->
-              <p class="w3-left">{{item.time}}, <span class="w3-opacity">1398/08/24</span></p>
-              <h3>{{item.title}}</h3><br>
-              <p class="w3-margin-bottom">{{item.summery}}</p>
-              <!-- <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom"> -->
+        <div class="w3-margin w3-center w3-text-gray" *ngIf="posts.length==0">
+          <p>هیچ پستی منتشر نکرده اید.</p>
+        </div>
+        <hr>
+        </mat-tab>
+        <mat-tab *ngIf="showFollowing" label="مورد علاقه ها">
+          <div *ngFor="let item of fav" class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <!-- <span class="w3-left w3-opacity">1 min</span> -->
+            <p class="w3-left">{{item.time}}</p>
+            <!-- , <span class="w3-opacity">1398/08/24</span></p> -->
+            <h3>{{item.postTitle}}</h3><br>
+            <p class="w3-margin-bottom">{{item.postShortDescription}}</p>
+            <!-- <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom"> -->
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">
+              <i class="fa fa-eye"></i>
+              {{item.postView}}</button>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                class="fa fa-star w3-margin-left"></i>{{item.postRank}}</button>
+            <!-- <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                class="fa fa-comment w3-margin-left"></i>{{item.comments.length}}</button> -->
+            <span>
+              <button mat-raised-button class="w3-left w3-green w3-border">بیشتر</button>
+            </span>
+          </div>
 
-              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-eye"></i>
-                {{item.view}}</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                  class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                  class="fa fa-comment w3-margin-left"></i>{{item.comments.length}}</button>
-              <span><button mat-raised-button class="w3-left w3-green w3-border">بیشتر</button></span>
-            </div>
-            <div class="w3-margin w3-center w3-text-gray" *ngIf="!faceUser.posts">
-              <p>هیچ پستی منتشر نکرده اید.</p>
-            </div>
-            <hr>
-          </mat-tab>
-          <mat-tab label="مورد علاقه ها">
-            <div *ngFor="let item of faceUser.posts" class="w3-container w3-card w3-white w3-round w3-margin"><br>
-              <!-- <span class="w3-left w3-opacity">1 min</span> -->
-              <p class="w3-left">{{item.time}}, <span class="w3-opacity">1398/08/24</span></p>
-              <h3>{{item.title}}</h3><br>
-              <p class="w3-margin-bottom">{{item.summery}}</p>
-              <!-- <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom"> -->
+          <div class="w3-margin w3-center w3-text-gray" *ngIf="fav.length<1">
+            <p>هیچ پست موردعلاقه ای وجود ندارد.</p>
+          </div>
+          <hr>
+        </mat-tab>
+        <mat-tab label="آگهی ها">
+          <div *ngFor="let item of banners" class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <!-- <span class="w3-left w3-opacity">1 min</span> -->
+            <p class="w3-left">{{item.time}}</p>
+            <!-- , <span class="w3-opacity">1398/08/24</span></p> -->
+            <h3>{{item.postTitle}}</h3><br>
+            <p class="w3-margin-bottom">{{item.postShortDescription}}</p>
+            <!-- <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom"> -->
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">
+              <i class="fa fa-eye"></i>
+              {{item.postView}}</button>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                class="fa fa-star w3-margin-left"></i>{{item.postRank}}</button>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                class="fa fa-comment w3-margin-left"></i>{{item.comments.length}}</button>
+            <span>
+              <button mat-raised-button class="w3-left w3-green w3-border">بیشتر</button>
+            </span>
+          </div>
+          <div class="w3-margin w3-center w3-text-gray" *ngIf="banners.length<1">
+            <p>هیچ آگهی منتشر نکرده اید.</p>
+          </div>
 
-              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-eye"></i>
-                {{item.view}}</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                  class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                  class="fa fa-comment w3-margin-left"></i>{{item.comments.length}}</button>
-              <span><button mat-raised-button class="w3-left w3-green w3-border">بیشتر</button></span>
-            </div>
-            <div class="w3-margin w3-center w3-text-gray" *ngIf="!faceUser.posts">
-              <p>هیچ پست موردعلاقه ای وجود ندارد.</p>
-            </div>
-            <hr>
-          </mat-tab>
-          <mat-tab label="آگهی ها">
-            <div *ngFor="let item of faceUser.posts" class="w3-container w3-card w3-white w3-round w3-margin"><br>
-              <!-- <span class="w3-left w3-opacity">1 min</span> -->
-              <p class="w3-left">{{item.time}}, <span class="w3-opacity">1398/08/24</span></p>
-              <h3>{{item.title}}</h3><br>
-              <p class="w3-margin-bottom">{{item.summery}}</p>
-              <!-- <img src="../../../assets/imgs/it.jpg" style="width:100%" class="w3-margin-bottom"> -->
-
-              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-eye"></i>
-                {{item.view}}</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                  class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
-              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                  class="fa fa-comment w3-margin-left"></i>{{item.comments.length}}</button>
-              <span><button mat-raised-button class="w3-left w3-green w3-border">بیشتر</button></span>
-            </div>
-            <div class="w3-margin w3-center w3-text-gray" *ngIf="!faceUser.posts">
-              <p>هیچ آگهی منتشر نکرده اید.</p>
-            </div>
-
-            <hr>
-          </mat-tab>
-          <!-- <mat-tab label="یادداشت ها">
-            <div class="w3-container  w3-margin">
-              <h3 class="text-muted w3-center">هنوز چیزی انتخاب نشده :(</h3>
-            </div>
-          </mat-tab> -->
+          <hr>
+        </mat-tab>
         </mat-tab-group>
       </div>
-
-      <!-- End Left Column -->
     </div>
-    <!-- End Grid -->
+
   </div>
+
+
+
+
+
   <!-- End Page Container -->
 
   <!-- Modal Container -->
@@ -180,13 +188,14 @@
             <input matInput class="w3-input w3-margin-bottom" placeholder="تاریخ تولد" style="width: 100%" type="text"
               name="birthday" formControlName="birthday" required>
           </mat-form-field>
-          <div class="btns">
-            <button mat-raised-button class="btn ok-button w3-green w3-animate-right">ثبت</button>
-            <button mat-raised-button class="btn cancel-button w3-red w3-animate-left"
+          <div>
+            <button mat-raised-button class="btns ok-button w3-green w3-animate-right">ثبت</button>
+            <button mat-raised-button class="btns cancel-button w3-red w3-animate-left"
               onclick="document.getElementById('id01').style.display='none'">بازگشت</button>
           </div>
         </div>
       </form>
     </div>
   </div>
+</div>
 </div>

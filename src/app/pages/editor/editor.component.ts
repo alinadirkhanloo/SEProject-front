@@ -113,8 +113,7 @@ export class EditorComponent {
       htmlContent: new FormControl('', [Validators.required]),
       category: new FormControl(null, [Validators.required]),
       timeToRead: new FormControl('', [Validators.required]),
-      image: new FormControl('', []),
-      // tags: [[]],
+      image: new FormControl('http://uupload.ir/files/o1p2_img4-min.png', []),
     });
     this.api.getAllCategory().subscribe(
       res => {
@@ -155,14 +154,17 @@ export class EditorComponent {
       categoryId: this.f.category.value
     };
     this.api.createPosts(this.post).subscribe(
-      data => {
-        if (data.isSuccess) {
-          console.log('post data=', data);
-          alert('SUCCESS!! :-)\n\n' + data.message);
+      res => {
+        if (res.isSuccess) {
+          console.log(res.data);
+          this.api.createTag(res.data.id,this.tags).subscribe(data=>{
+            alert('tags added!! :-)\n\n' + data.message);
+          });
+          alert('SUCCESS!! :-)\n\n' + res.message);
           this.router.navigate(['/home']);
         } else {
-          console.log(data);
-          this.error = data.message;
+          console.log(res);
+          this.error = res.message;
         }
       },
       error => {

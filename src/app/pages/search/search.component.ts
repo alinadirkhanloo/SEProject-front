@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Post } from 'src/app/model/post.model';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-search',
@@ -10,9 +12,10 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class SearchComponent implements OnInit {
   searchForm: FormGroup;
-  resullts: Post[];
+  posts:[];
   error = '';
-  constructor(private formbilder: FormBuilder, private api: ApiService) {
+  constructor(private formbilder: FormBuilder, private api: ApiService,
+    private router: Router, private shared: SharedDataService) {
   }
 
   ngOnInit() {
@@ -27,14 +30,19 @@ export class SearchComponent implements OnInit {
     if (this.searchForm.invalid) {
       return;
     }
-    this.api.searchPost(this.f.query.value).subscribe(posts => {
-      if (posts.isSuccess) {
-        this.resullts = posts.data;
-        console.log('okk',posts);
+    this.api.searchPost(this.f.query.value).subscribe(res => {
+      if (res.isSuccess) {
+        this.posts = res.data;
+        console.log('okk', res);
         return;
       }
-      this.error = posts.message;
+      this.error = res.message;
     });
 
+  }
+
+  getPost(id) {
+    this.shared.setPostId(id);
+    this.router.navigate(['blog']);
   }
 }
