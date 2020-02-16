@@ -10,26 +10,42 @@ export class SharedDataService {
   public isLoggedIn: BehaviorSubject<boolean>;
   public catName: BehaviorSubject<string>;
   public catId: BehaviorSubject<number>;
+  public postId: BehaviorSubject<number>;
   public postTitle: BehaviorSubject<string>;
-  public user: BehaviorSubject<User>;
+  public userId: BehaviorSubject<number>;
   public currentUser: BehaviorSubject<User>;
   constructor() {
     this.isLoggedIn = new BehaviorSubject(false);
     this.catName = new BehaviorSubject('');
     this.catId = new BehaviorSubject(null);
+    this.postId = new BehaviorSubject(null);
     this.currentUser = new BehaviorSubject<User>(null);
-    this.user = new BehaviorSubject(null);
+    this.userId = new BehaviorSubject(null);
     this.postTitle = new BehaviorSubject('');
   }
 
 
-  getUser() {
-    return this.user.asObservable();
+  getUserId() {
+    return this.userId.asObservable();
+  }
+
+  setUserId(id) {
+    this.userId.next(id);
+  }
+
+  setPostId(id) {
+    this.postId.next(id);
+  }
+
+  getPostId() {
+    return this.postId.asObservable();
   }
 
   setLoggedIn(bool) {
     this.isLoggedIn.next(bool);
   }
+
+
   getLoggedStatus() {
     return this.isLoggedIn.asObservable();
   }

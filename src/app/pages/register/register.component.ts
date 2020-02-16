@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
           this.loading = true;
           // this.sharedData.setcurrentUserValue(data.data);
           localStorage.setItem('currentUser', JSON.stringify(data.data));
+          this.sharedData.setUserId(data.data.id);
           console.log('local storage in login is ok');
           this.authenticationService.login(this.f.userName.value, this.f.password.value).pipe(first())
             .subscribe(

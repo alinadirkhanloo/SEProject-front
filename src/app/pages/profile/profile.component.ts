@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { isDateValid } from 'ngx-bootstrap';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,19 +15,43 @@ import { ApiService } from 'src/app/services/api.service';
 export class ProfileComponent implements OnInit {
   faceUser: User;
   proForm: FormGroup;
+  fav = [];
+  posts = [];
+  banners = [];
+  following = [];
+  showFollowing = false;
+  userid = null;
   constructor(
     private shData: SharedDataService,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private api: ApiService) {
-    console.log('dd', localStorage.getItem('currentUser'));
-    console.log('ll', JSON.parse(localStorage.getItem('currentUser')));
+    private router: Router,
+    private api: ApiService,
+    private shared: SharedDataService) {
     this.faceUser = JSON.parse(localStorage.getItem('currentUser'));
-
+    this.shData.getUserId().subscribe(res => {
+      this.userid = res;
+    });
+    if (this.faceUser.id == this.userid) {
+      this.showFollowing = true;
+    }
+    this.api.getPostByUserID(this.faceUser.id).subscribe(res => {
+      this.posts = res.data;
+    });
+    this.api.getAllFavorites().subscribe(res => {
+      this.fav = res.data;
+      console.log('fav',this.fav);
+    });
+    this.api.getEmployeByUserID(this.faceUser.id).subscribe(res => {
+      this.banners = res.data;
+    });
+    this.api.getAllFollowers().subscribe(res => {
+      this.following = res.data;
+      console.log('this.faceUser.id', this.following);
+    });
   }
 
   ngOnInit() {
-
     this.proForm = this.formBuilder.group({
       fullName: new FormControl(this.faceUser.fullName, [Validators.required, Validators.minLength(3)]),
       // userName:  new FormControl(this.faceUser.userName,[Validators.required, Validators.minLength(3)]),
@@ -38,6 +63,13 @@ export class ProfileComponent implements OnInit {
 
   edit() {
     console.log(this.proForm.invalid);
+    if (this.proForm.invalid) {
+      alert('اطلاعات درست نمیباشد. هیچ فیلدی نباید خالی باقی بماند.');
+      return;
+    }
+    // this.api.updateUser().subscribe(res => {
+    //   this.faceUser = res.data;
+    // });
   }
   unfollow(id) {
     console.log('unfollow');
@@ -70,5 +102,10 @@ export class ProfileComponent implements OnInit {
         console.log('deleted');
       }
     });
+  }
+
+  getPost(id) {
+    this.shared.setPostId(id);
+    this.router.navigate(['blog']);
   }
 }

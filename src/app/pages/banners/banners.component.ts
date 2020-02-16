@@ -17,24 +17,15 @@ export interface Banner {
 export class BannersComponent implements OnInit {
 
   banner: Banner;
-  banners =  [
-    {
-      title: 'title',
-      text: 'text',
-      time: "2020-02-13T12:25:24.389Z",
-      type: 0,
-      id: 0,
-      userFullName: 'ali'
-    }
-  ]
+  banners =  [];
   types = ['تبلیغات', 'اطلاعیه', 'استخدامی'];
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    // this.api.getAllEmployes().subscribe(res => {
-    //   this.banners = res.data;
-    // });
+    this.api.getAllEmployes().subscribe(res => {
+      this.banners = res.data;
+    });
   }
 
   getBanner(index) {

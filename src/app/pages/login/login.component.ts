@@ -63,7 +63,8 @@ export class LoginComponent implements OnInit {
           this.showSpinner = '';
           this.api.getUserInfo().subscribe(res => {
             localStorage.setItem('currentUser', JSON.stringify(res.data));
-            console.log('current user ', localStorage.getItem('currentUser'));
+            this.sharedData.setUserId(res.data.id);
+            console.log('current user', localStorage.getItem('currentUser'));
           });
           this.router.navigate([this.returnUrl]);
         },

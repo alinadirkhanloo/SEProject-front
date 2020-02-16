@@ -3,14 +3,25 @@ import { TextSelectEvent } from "./text-select.directive";
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { SharedDataService } from 'src/app/services/shared-data.service';
+import { Post } from 'src/app/model/post.model';
 
 interface Blog {
-  title: string,
-  body: string,
-  date: string,
-  img: string,
-  owner: string
+  title: string;
+  text: string;
+  time: string;
+  shortDescription: string;
+  timeToRead: number;
+  image: string;
+  view: number;
+  rank: number;
+  authorId: number;
+  id: number;
+  categoryName: string;
+  authorFullName: string;
+  tags: [];
 }
+
+
 interface SelectionRectangle {
   left: number;
   top: number;
@@ -34,24 +45,27 @@ export class BlogComponent implements OnInit {
   private selectedText: string;
   private selection_start = 0;
   private selection_end = 0;
-
+  private postId = 0;
+  private post: Blog = null;
   content = '';
-
-
-
-  blog = {
-    title: 'قسمت دوم کامران تفتی',
-    body: 'قسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودرویی شاید در صداسیما کمی دور از ذهن بود ولی شبکه نسیم جزو شبکه هایی است که به علاقه مندان حوزه خودرو و ماشین احترام گذاشته است و این مسابقه پرهیجان را تقدیم علاقه مندان کرده است.',
-    date: '1398/02/11',
-    img: 'full-screen-image-3.jpg',
-    owner: 'ali'
-  };
-
-  constructor(private api: ApiService, private router:Router,private sharedata:SharedDataService) {
+  userId = null;
+  authId = null;
+  constructor(private api: ApiService, private router: Router, private sharedata: SharedDataService) {
     this.hostRectangle = null;
     this.selectedText = '';
-    this.content = '<div style="text-align: right;"><span style="color: rgb(0, 0, 0); font-size: 18px; background-color: transparent;">قسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم </span><span style="color: rgb(0, 0, 0); font-size: 18px; background-color: rgb(220, 242, 91)!important;">مسابقه خودرویی دست فرمون</span><span style="color: rgb(0, 0, 0); font-size: 18px; background-color: transparent;"> با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودروییقسمت دوم مسابقه خودرویی دست فرمون با حضور کامران تفنی به احرا در آمد. وجود برنامه های خودرویی شاید در صداسیما کمی دور از ذهن بود ولی شبکه نسیم جزو شبکه هایی است که به علاقه مندان حوزه خودرو و ماشین احترام گذاشته است و این مسابقه پرهیجان را تقدیم علاقه مندان کرده است.</span></div>'
 
+    this.sharedata.getPostId().subscribe(res => {
+      this.postId = res;
+    });
+    this.api.getPostByID(this.postId).subscribe(res => {
+      this.post = res.data;
+      this.authId = this.post.authorId;
+      console.log('authId', this.post.tags);
+    });
+    this.sharedata.getUserId().subscribe(res => {
+      this.userId = res;
+      console.log('userid', res);
+    });
   }
 
   ngOnInit() {
@@ -122,12 +136,23 @@ export class BlogComponent implements OnInit {
 
   follow(id) {
     this.api.createFollower(id).subscribe(res => {
-      if (res.isSuccess) { console.log('its ok'); }
+      if (res.isSuccess) {
+        alert('its ok');
+      }
     });
   }
   comments(title) {
     this.sharedata.setPostTitle(title);
     this.router.navigate(['/comments']);
+  }
+  addToFav(id) {
+    this.api.createFavorite(id).subscribe(res => {
+      if (res.isSuccess) { alert('added to fav'); }
+    });
+  }
+
+  sharePost() {
+    console.log('shared');
   }
 
 }
