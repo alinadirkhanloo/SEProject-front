@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
+
   comments = [];
   postTitle = '';
   postid = null;
@@ -40,7 +41,7 @@ export class CommentsComponent implements OnInit {
         this.comments.push(res.data);
       });
     }
-  }
+  
   deleteComment() {
 
   }
