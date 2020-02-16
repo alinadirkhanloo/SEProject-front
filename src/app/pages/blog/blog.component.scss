@@ -1,53 +1,54 @@
-*{
+* {
   font-family: vazir;
 }
-i{
+i {
   font-family: "Font Awesome 5 Free";
 }
 
 .indicator {
-	background-color: fade( gold, 10% ) ;
-	position: absolute ;
-	z-index: 2 ;
-	&__cta {
-    top:300px;
-    left:450px;
-		position: absolute ;
-	}
+  background-color: fade(gold, 10%);
+  position: absolute;
+  z-index: 2;
+  &__cta {
+    top: 300px;
+    left: 450px;
+    position: absolute;
+  }
 
-	&__cta-link {
-		background-color: #333333 ;
-		border-radius: 5px 5px 5px 5px ;
-		bottom: 0px ;
-		box-shadow: 2px 2px 5px fade( #000000, 30% ) ;
-		color: #FFFFFF ;
-		cursor: pointer ;
-		left: 0px ;
-		padding: 11px 22px 10px 22px ;
-		position: absolute ;
-		transform: translateX( -50% ) ;
-		white-space: nowrap ;
+  &__cta-link {
+    background-color: #333333;
+    border-radius: 5px 5px 5px 5px;
+    bottom: 0px;
+    box-shadow: 2px 2px 5px fade(#000000, 30%);
+    color: #ffffff;
+    cursor: pointer;
+    left: 0px;
+    padding: 11px 22px 10px 22px;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
 
-		&:after {
-			bottom: -10px ;
-			font-size: 15px ;
-			left: 50% ;
-			line-height: 15px ;
-			content: "▼" ;
-			color: #333333 ;
-			position: absolute ;
-			transform: translateX( -50% ) ;
-		}
-
-	}
+    &:after {
+      bottom: -10px;
+      font-size: 15px;
+      left: 50%;
+      line-height: 15px;
+      content: "▼";
+      color: #333333;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+  }
 }
 
 .indicator .sel:hover {
-			background-color: rgb(255, 0, 0) ;
-			color: #fff;
-		}
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+}
 
-
-    i:hover{
-      color: #FFFFFF!important;
-    }
+i:hover {
+  color: #ffffff !important;
+}
+.highlightText {
+  background: yellow;
+}

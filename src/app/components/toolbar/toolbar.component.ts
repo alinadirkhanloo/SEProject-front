@@ -9,18 +9,17 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private auth:AuthenticationService) { }
+  constructor(private auth: AuthenticationService, private shared: SharedDataService) { }
 
   ngOnInit() {
   }
 
   loginStatus() {
-    if(this.auth.getcurrentUserValue()){
-      return true
-    }else{
-      return false
-    }
-
+    return this.auth.getcurrentUserTokenValue();
+  }
+  logout() {
+    this.shared.setLoggedIn(true);
+    this.auth.logout();
   }
 
 

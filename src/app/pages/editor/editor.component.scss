@@ -114,3 +114,8 @@ i:hover{
   overflow: auto;
   outline: none;
 }
+
+::ng-deep #toggleEditorMode-{
+  display: none;
+}
+

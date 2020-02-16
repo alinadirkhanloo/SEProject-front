@@ -3,14 +3,9 @@ import { Comment } from './comment.model';
 
 export class Post {
   title: string;
-  description: string;
-  categoryName: string;
-  authorFullName: string;
-  summery: string;
-  view: number;
-  rank: number;
-  id: number;
-  time: string;
-  childCategories: Category[];
-  comments: Comment[];
+  text: string;
+  categoryId: string;
+  shortDescription: string;
+  timeToRead: string;
+  image: string;
 }

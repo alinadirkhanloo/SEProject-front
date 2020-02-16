@@ -1,4 +1,4 @@
-<app-nav></app-nav>
+<app-nav *ngIf="!loginStatus()"></app-nav>
 <div class="w3-content" dir="rtl" style="max-width:1400px">
   <!-- Header -->
   <header class="w3-container w3-center w3-padding-32">
@@ -129,7 +129,47 @@
             <span class="w3-large">یادگیری ماشین</span><br>
             <span>یادگیری عمیق</span>
           </li>
-          <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">یادگیری ماشین</span><br>
+            <span>یادگیری عمیق</span>
+          </li>
+          <li class="w3-padding-16">
             <img src="../../../assets/imgs/avatar.png" alt="Image" class="w3-left w3-margin-right" style="width:50px">
             <span class="w3-large">یادگیری ماشین</span><br>
             <span>یادگیری عمیق</span>
@@ -137,7 +177,7 @@
         </ul>
       </div>
       <hr>
-
+      <!-- w3-hide-medium w3-hide-small -->
       <!-- Labels / tags -->
       <div class="w3-card w3-margin w3-white">
         <div class="w3-container w3-padding">
@@ -203,19 +243,12 @@
       <div class="w3-card w3-round w3-margin w3-white w3-hide-small">
         <div class="w3-container">
           <h4>برترین تگ ها</h4>
-          <p>
-            <span class="w3-tag w3-small w3-theme-d5">News</span>
-            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-            <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-            <span class="w3-tag w3-small w3-theme-d2">Games</span>
-            <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-            <span class="w3-tag w3-small w3-theme">Games</span>
-            <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-            <span class="w3-tag w3-small w3-theme-l2">Food</span>
-            <span class="w3-tag w3-small w3-theme-l3">Design</span>
-            <span class="w3-tag w3-small w3-theme-l4">Art</span>
-            <span class="w3-tag w3-small w3-theme-l5">Photos</span>
-          </p>
+          <mat-chip-list aria-label="Tag Selection" class="w3-margin">
+            <mat-chip color="accent" selected>#php</mat-chip>
+            <mat-chip color="accent" selected>#java</mat-chip>
+            <mat-chip color="accent" selected>#python</mat-chip>
+            <mat-chip color="accent" selected>#django</mat-chip>
+          </mat-chip-list>
         </div>
       </div>
 
