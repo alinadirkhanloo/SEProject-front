@@ -15,11 +15,6 @@ export class ApiService {
   id: number;
   httpOptions = null;
   constructor(private http: HttpClient, private auth: AuthenticationService) {
-    if (this.auth.getcurrentUserTokenValue()) {
-      this.httpOptions = new HttpHeaders({
-        Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
-      });
-    }
   }
 
 
@@ -89,7 +84,9 @@ export class ApiService {
   }
 
   createComment(comment: string, id: number) {
-
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.post<any>(`http://95.216.12.8:91/api/v1/Comments/Create`, {
       text: comment,
       postId: id
@@ -122,6 +119,9 @@ export class ApiService {
   }
 
   createEmploye(banTitle: string, banText: string, banType: number) {
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.post<any>(`http://95.216.12.8:91/api/v1/Employs/Create`, {
       title: banTitle,
       text: banText,
@@ -132,6 +132,9 @@ export class ApiService {
   // Favorites
 
   getAllFavorites() {
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Favorites/Get`, { headers: this.httpOptions });
   }
 
@@ -140,6 +143,9 @@ export class ApiService {
   }
 
   createFavorite(id: number) {
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.post<any>(`http://95.216.12.8:91/api/v1/Favorites/Create/`, { postId: id }, { headers: this.httpOptions });
   }
 
@@ -147,7 +153,9 @@ export class ApiService {
   // Followers
 
   getAllFollowers() {
-
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Followers/Get`, { headers: this.httpOptions });
   }
 
@@ -156,7 +164,9 @@ export class ApiService {
   }
 
   createFollower(id) {
-
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.post<any>(`http://95.216.12.8:91/api/v1/Followers/Create`, {
       followerId: String(id),
     }, { headers: this.httpOptions });
@@ -182,7 +192,7 @@ export class ApiService {
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetAllByCatId/` + id, { params });
   }
 
-  getSimilarPost(id: string) {
+  getSimilarPost(id: number) {
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/GetSimilar/` + id);
   }
 
@@ -236,6 +246,10 @@ export class ApiService {
   }
 
   getUserInfo() {
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
+    console.log('kkk', this.httpOptions);
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Users/GetUserInfo`, { headers: this.httpOptions });
   }
 
@@ -265,10 +279,26 @@ export class ApiService {
   }
 
   createTag(id: number, tag: string[]) {
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
     return this.http.post<any>(`http://95.216.12.8:91/api/v1/Tags/AddTag`, {
-      postId:id,tagName:tag
+      postId: id, tagName: tag
     }, { headers: this.httpOptions });
 
   }
 
+
+  getAllTags() {
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Tags/Get`);
+  }
+
+
+  likePost(id: number) {
+    this.httpOptions = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.getcurrentUserTokenValue().access_token}`
+    });
+    return this.http.get<any>(`http://95.216.12.8:91/api/v1/Posts/Like/` + id, { headers: this.httpOptions });
+
+  }
 }

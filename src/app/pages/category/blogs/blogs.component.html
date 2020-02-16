@@ -15,13 +15,13 @@
             <p>{{item.authorFullName}}</p><br>
             <p class="w3-margin-bottom">{{item.shortDescription}}</p>
             <div class="w3-margin">
-              <img src="{{item.image}}" style="width:100%;height: 500px;" class="w3-margin-bottom w3-round w3-card">
+              <img src="{{item.image}}" style="width:100%;height: 350px;" class="w3-margin-bottom w3-round w3-card">
             </div>
 
             <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-eye w3-margin-left"></i>
               {{item.view}}</button>
             <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-                class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
+                class="fa fa-thumbs-up w3-margin-left"></i>{{item.rank}}</button>
             <span><button mat-raised-button class="w3-left w3-green w3-border"
                 (click)="getPost(item.id)">بیشتر</button></span>
           </div>

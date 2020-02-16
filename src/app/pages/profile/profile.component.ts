@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  faceUser: User;
+  fackUser: User;
   proForm: FormGroup;
   fav = [];
   posts = [];
@@ -29,21 +29,15 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private api: ApiService,
     private shared: SharedDataService) {
-    this.faceUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.shData.getUserId().subscribe(res => {
-      this.userid = res;
-    });
-    if (this.faceUser.id == this.userid) {
-      this.showFollowing = true;
-    }
-    this.api.getPostByUserID(this.faceUser.id).subscribe(res => {
+    this.fackUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.api.getPostByUserID(this.fackUser.id).subscribe(res => {
       this.posts = res.data;
     });
     this.api.getAllFavorites().subscribe(res => {
       this.fav = res.data;
       console.log('fav',this.fav);
     });
-    this.api.getEmployeByUserID(this.faceUser.id).subscribe(res => {
+    this.api.getEmployeByUserID(this.fackUser.id).subscribe(res => {
       this.banners = res.data;
     });
     this.api.getAllFollowers().subscribe(res => {
@@ -54,11 +48,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.proForm = this.formBuilder.group({
-      fullName: new FormControl(this.faceUser.fullName, [Validators.required, Validators.minLength(3)]),
+      fullName: new FormControl(this.fackUser.fullName, [Validators.required, Validators.minLength(3)]),
       // userName:  new FormControl(this.faceUser.userName,[Validators.required, Validators.minLength(3)]),
-      phoneNumber: new FormControl(this.faceUser.phoneNumber, [Validators.required, Validators.minLength(11)]),
-      email: new FormControl(this.faceUser.email, [Validators.required, Validators.email]),
-      birthday: new FormControl(this.faceUser.birthday, [Validators.required]),
+      phoneNumber: new FormControl(this.fackUser.phoneNumber, [Validators.required, Validators.minLength(11)]),
+      email: new FormControl(this.fackUser.email, [Validators.required, Validators.email]),
+      birthday: new FormControl(this.fackUser.birthday, [Validators.required]),
     });
   }
 
