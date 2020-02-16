@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   posts = [];
   banners = [];
   following = [];
+  types = ['تبلیغات', 'اطلاعیه', 'استخدامی'];
   showFollowing = false;
   userid = null;
   constructor(

@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
           this.sharedData.setLoggedIn(true);
           this.showSpinner = '';
           this.api.getUserInfo().subscribe(res => {
+            console.log('ff',res);
             localStorage.setItem('currentUser', JSON.stringify(res.data));
             this.sharedData.setUserId(res.data.id);
             console.log('current user', localStorage.getItem('currentUser'));
