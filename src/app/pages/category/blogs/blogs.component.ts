@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from 'src/app/services/shared-data.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class BlogsComponent implements OnInit {
   disabled = false;
   catName: string;
   catId = null;
-  constructor(private sharedata: SharedDataService, private api: ApiService) { }
+  constructor(private sharedata: SharedDataService, private api: ApiService, private router: Router) { }
   posts = [];
   ngOnInit() {
     this.sharedata.getCategoryName().subscribe(res => {
@@ -27,6 +28,10 @@ export class BlogsComponent implements OnInit {
     this.api.getAllPostsByCatId(this.catId, 10).subscribe(res => {
       this.posts = res.data;
     });
+  }
+  getPost(id) {
+    this.sharedata.setPostId(id);
+    this.router.navigate(['blog']);
   }
 
   test() {

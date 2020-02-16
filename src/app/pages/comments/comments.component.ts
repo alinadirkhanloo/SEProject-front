@@ -41,8 +41,5 @@ export class CommentsComponent implements OnInit {
         this.comments.push(res.data);
       });
     }
-  
-  deleteComment() {
-
   }
 }

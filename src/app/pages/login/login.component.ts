@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
     this.showSpinner = 'block';
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.showSpinner = '';
       return;
     }
 
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
           this.sharedData.setLoggedIn(true);
           this.showSpinner = '';
           this.api.getUserInfo().subscribe(res => {
+            console.log('ff',res);
             localStorage.setItem('currentUser', JSON.stringify(res.data));
             this.sharedData.setUserId(res.data.id);
             console.log('current user', localStorage.getItem('currentUser'));
@@ -69,7 +71,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.error = error;
+          this.error = error.message;
           this.loading = false;
           this.showSpinner = '';
         });

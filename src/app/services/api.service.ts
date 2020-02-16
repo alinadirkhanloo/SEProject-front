@@ -236,7 +236,6 @@ export class ApiService {
   }
 
   getUserInfo() {
-
     return this.http.get<any>(`http://95.216.12.8:91/api/v1/Users/GetUserInfo`, { headers: this.httpOptions });
   }
 
