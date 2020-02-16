@@ -1,45 +1,46 @@
 <app-nav *ngIf="!loginStatus()"></app-nav>
 
- <!-- Header -->
- <header class="w3-center">
-    <slideshow *ngIf="loginStatus()" [height]="height" [minHeight]="'525px'" [autoPlay]="true" [showArrows]="false" [imageUrls]="imageSources"
-      [lazyLoad]="imageSources?.length > 1" [autoPlayWaitForLazyLoad]="true">
-    </slideshow>
-  </header>
-  <div *ngIf="!loginStatus()" class="w3-padding-32 w3-center w3-margin">
-      <div class="w3-container w3-padding" id="about">
-         <h3 class="w3-center">DIVISION BY ZERO</h3>
-         <p class="w3-center w3-large">وب سایتی برای همه کامپیوتری ها</p>
-       <div class="w3-row-padding w3-center" style="margin-top:64px">
-         <div class="w3-quarter">
-           <i class="fas fa-chalkboard-teacher w3-margin-bottom w3-jumbo w3-center"></i>
-           <p class="w3-large">یادگیری سریع</p>
-           <p>آموزش ها موضوعی بوده و امکان قرار داده شده که هم توسط نویسنده و هم خواننده مقاله قابل استفاده است و در ثبات مطالب و یادگیری تاثیر گذار خواهد بود.</p>
-         </div>
-         <div class="w3-quarter">
-           <i class="fas fa-swatchbook w3-margin-bottom w3-jumbo"></i>
-           <p class="w3-large">متنوع و مختلط</p>
-           <p>در این وب سایت سعی شده غالب زمینه های کامپیوتری پوشش داده شود.</p>
-         </div>
-         <div class="w3-quarter">
-           <i class="fas fa-globe w3-margin-bottom w3-jumbo"></i>
-           <p class="w3-large">زبان فارسی</p>
-           <p>مقالات خود را با زبان شیرین فارسی بنویسید و از سایر مقالات که به زبان فارسی نوشته شده اند لذت ببرید.</p>
-         </div>
-         <div class="w3-quarter">
-           <i class="fas fa-file-pdf w3-margin-bottom w3-jumbo"></i>
-           <p class="w3-large">تهیه نسخه PDF</p>
-           <p>ما برای شما امکانی قرار داده ایم تا مقالات دلخواه خود را به صورت نسخه PDF دریافت نمایید.</p>
-         </div>
-       </div>
-     </div>
-     </div>
-<div class="w3-content" dir="rtl" style="max-width:1400px">
+<!-- Header -->
+<header class="w3-center">
+  <slideshow *ngIf="loginStatus()" [height]="height" [minHeight]="'525px'" [autoPlay]="true" [showArrows]="false"
+    [imageUrls]="imageSources" [lazyLoad]="imageSources?.length > 1" [autoPlayWaitForLazyLoad]="true">
+  </slideshow>
+</header>
+<div *ngIf="!loginStatus()" class="w3-padding-32 w3-center w3-margin">
+  <div class="w3-container w3-padding" id="about">
+    <h3 class="w3-center">DIVISION BY ZERO</h3>
+    <p class="w3-center w3-large">وب سایتی برای همه کامپیوتری ها</p>
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+      <div class="w3-quarter">
+        <i class="fas fa-chalkboard-teacher w3-margin-bottom w3-jumbo w3-center"></i>
+        <p class="w3-large">یادگیری سریع</p>
+        <p>آموزش ها موضوعی بوده و امکان قرار داده شده که هم توسط نویسنده و هم خواننده مقاله قابل استفاده است و در ثبات
+          مطالب و یادگیری تاثیر گذار خواهد بود.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fas fa-swatchbook w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">متنوع و مختلط</p>
+        <p>در این وب سایت سعی شده غالب زمینه های کامپیوتری پوشش داده شود.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fas fa-globe w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">زبان فارسی</p>
+        <p>مقالات خود را با زبان شیرین فارسی بنویسید و از سایر مقالات که به زبان فارسی نوشته شده اند لذت ببرید.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fas fa-file-pdf w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-large">تهیه نسخه PDF</p>
+        <p>ما برای شما امکانی قرار داده ایم تا مقالات دلخواه خود را به صورت نسخه PDF دریافت نمایید.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w3-container" dir="rtl">
   <!-- Grid -->
-  <div class="w3-row">
+  <div class="w3-container">
 
     <!-- Blog entries -->
-    <div class="w3-col l10 s10" style="margin:0 5%;">
+    <div class="w3-panel" style="margin:0 5%;">
       <!-- Blog entry -->
       <!-- <div class="w3-card-4 w3-margin w3-white">
     <img src="../../../assets/imgs/it.jpg" alt="Nature" style="width:100%">
@@ -61,8 +62,8 @@
     </div>
   </div>
   <hr> -->
-      <div class="w3-row-padding w3-margin-top">
-        <div class="w3-col m12">
+      <div class=" w3-margin-top">
+        <div class="w3-container">
           <div class="w3-card w3-round w3-white">
             <div class="w3-container w3-padding-16">
               <span class="w3-margin-left"><i class="fa fa-list w3-margin-left"></i>مرتب سازی بر اساس :</span>
@@ -82,22 +83,28 @@
         </div>
       </div>
 
-      <div *ngFor="let item of posts" class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <!-- <span class="w3-left w3-opacity">1 min</span> -->
-        <p class="w3-left">{{item.timeToRead}} دقیقه , <span class="w3-opacity">{{item.time}}</span></p>
-        <div class="w3-container">
-          <h3>{{item.title}}</h3>
-          <p>{{item.authorFullName}}</p><br>
-          <p class="w3-margin-bottom">{{item.shortDescription}}</p>
-          <div class="w3-margin">
-            <img src="{{item.image}}" style="width:100%;height: 500px;" class="w3-margin-bottom w3-round w3-card">
-          </div>
+      <div class="w3-container" style="width:100%;margin:auto">
+        <div *ngFor="let item of posts" class="w3-container w3-half w3-animate-bottom"><br>
+          <div class="w3-round w3-card w3-white" style="padding: 32px;">
+            <!-- <span class="w3-left w3-opacity">1 min</span> -->
+            <p class="w3-left">{{item.timeToRead}}دقیقه, <span class="w3-opacity">{{item.time}}</span></p>
+            <div class="w3-container">
+              <h3>{{item.title}}</h3>
+              <p>{{item.authorFullName}}</p><br>
+              <p class="w3-margin-bottom">{{item.shortDescription}}</p>
+              <div class="w3-margin">
+                <img src="{{item.image}}" style="width:100%;height: 350px;" class="w3-margin-bottom w3-round w3-card">
+              </div>
 
-          <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-eye w3-margin-left"></i>
-            {{item.view}}</button>
-          <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
-              class="fa fa-star w3-margin-left"></i>{{item.rank}}</button>
-          <span><button mat-raised-button class="w3-left w3-green w3-border" (click)="getPost(item.id)">بیشتر</button></span>
+              <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i
+                  class="fa fa-eye w3-margin-left"></i>
+                {{item.view}}</button>
+              <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i
+                  class="fa fa-thumbs-up w3-margin-left"></i>{{item.rank}}</button>
+              <span><button mat-raised-button class="w3-left w3-green w3-border"
+                  (click)="getPost(item.id)">بیشتر</button></span>
+            </div>
+          </div>
 
         </div>
       </div>

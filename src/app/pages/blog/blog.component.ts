@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { SharedDataService } from 'src/app/services/shared-data.service';
 import { Post } from 'src/app/model/post.model';
+import { User } from 'src/app/model/user.model';
 
 interface Blog {
   title: string;
@@ -18,6 +19,7 @@ interface Blog {
   id: number;
   categoryName: string;
   authorFullName: string;
+  isFollowed: boolean;
   tags: [];
 }
 
@@ -48,24 +50,28 @@ export class BlogComponent implements OnInit {
   private postId = 0;
   private post: Blog = null;
   content = '';
-  userId = null;
+  fackUser: User;
   authId = null;
+  simPosts = [];
+  col = null;
   constructor(private api: ApiService, private router: Router, private sharedata: SharedDataService) {
     this.hostRectangle = null;
     this.selectedText = '';
-
+    this.fackUser = JSON.parse(localStorage.getItem('currentUser'));
     this.sharedata.getPostId().subscribe(res => {
       this.postId = res;
     });
     this.api.getPostByID(this.postId).subscribe(res => {
       this.post = res.data;
       this.authId = this.post.authorId;
-      console.log('authId', this.post.tags);
+      console.log('post', this.post);
     });
-    this.sharedata.getUserId().subscribe(res => {
-      this.userId = res;
-      console.log('userid', res);
+    this.api.getSimilarPost(this.postId).subscribe(res => {
+      console.log('sim', res.data);
+      this.simPosts = res.data;
+
     });
+    console.log('sim2', this.simPosts);
   }
 
   ngOnInit() {
@@ -155,4 +161,17 @@ export class BlogComponent implements OnInit {
     console.log('shared');
   }
 
+  like(id) {
+    this.api.likePost(id).subscribe(res => {
+      if (res.isSuccess) {
+        console.log('like');
+      }
+    });
+    this.col = 'warn';
+  }
+
+  getPost(id) {
+    this.sharedata.setPostId(id);
+    this.router.navigate(['blog']);
+  }
 }

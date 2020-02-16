@@ -25,6 +25,7 @@ export class BannersComponent implements OnInit {
   ngOnInit() {
     this.api.getAllEmployes().subscribe(res => {
       this.banners = res.data;
+      console.log(this.banners);
     });
   }
 

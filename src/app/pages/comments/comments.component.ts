@@ -29,17 +29,18 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.commentForm = this.formbuilder.group({
-      commentText: new FormControl('', [Validators.required])
+      commentText: new FormControl('',[])
     });
   }
   // convenience getter for easy access to form fields
   get f() { return this.commentForm.controls; }
 
   addComment() {
-    if (this.commentForm.valid) {
+    if (this.f.commentText.value != null) {
       this.api.createComment(this.f.commentText.value, this.postid).subscribe(res => {
         this.comments.push(res.data);
       });
     }
+    this.f.commentText.setValue('');
   }
 }

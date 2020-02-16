@@ -82,7 +82,7 @@ export class EditorComponent {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   tags: string[] = [];
-  allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  allTags: string[] = [];
   panelOpenState = false;
   bannerForm: FormGroup;
 
@@ -98,6 +98,12 @@ export class EditorComponent {
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
   constructor(private formBuilder: FormBuilder, private api: ApiService, private router: Router) {
+    this.api.getAllTags().subscribe(res => {
+      // this.allTags = res.data;
+      for (const i in res.data) {
+        this.allTags.push(res.data[i].name);
+      }
+    });
     this.hostRectangle = null;
     this.selectedText = '';
     this.post = null;
@@ -107,6 +113,7 @@ export class EditorComponent {
   }
 
   ngOnInit() {
+
     this.blogForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required]),
       shortDescription: new FormControl('', [Validators.required]),
@@ -128,18 +135,18 @@ export class EditorComponent {
 
   onSubmit() {
     if (this.blogForm.invalid) {
-      const i=document.getElementById('title-fa');
+      const i = document.getElementById('title-fa');
       if (this.f.title.invalid) {
 
-        i.style.color='red';
+        i.style.color = 'red';
         // console.log(document.getElementById('title-fa').className);
       } else {
-        i.style.color='black';
+        i.style.color = 'black';
       }
       if (this.f.shortDescription.invalid) {
-        document.getElementById('text-fa').style.color='red';
+        document.getElementById('text-fa').style.color = 'red';
       } else {
-        document.getElementById('text-fa').style.color='black';
+        document.getElementById('text-fa').style.color = 'black';
       }
       return;
     }
@@ -157,7 +164,7 @@ export class EditorComponent {
       res => {
         if (res.isSuccess) {
           console.log(res.data);
-          this.api.createTag(res.data.id,this.tags).subscribe(data=>{
+          this.api.createTag(res.data.id, this.tags).subscribe(data => {
             alert('tags added!! :-)\n\n' + data.message);
           });
           alert('SUCCESS!! :-)\n\n' + res.message);

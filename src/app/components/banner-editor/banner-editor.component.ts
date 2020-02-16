@@ -30,7 +30,7 @@ export class BannerEditorComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   tags: string[] = [];
-  allTags: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  allTags: string[] = [];
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
@@ -51,6 +51,7 @@ export class BannerEditorComponent implements OnInit {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+
   }
 
   ngOnInit() {
@@ -73,7 +74,7 @@ export class BannerEditorComponent implements OnInit {
     // this.sharedData.setLoggedIn(true);
     // this.bannerForm.value.tags = this.tags;
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.bannerForm.value, null, 4));
-    this.api.createEmploye(this.f.title.value,this.f.text.value,this.f.type.value).subscribe(
+    this.api.createEmploye(this.f.title.value, this.f.text.value, this.f.type.value).subscribe(
       data => {
         if (data.isSuccess) {
           console.log('emp data=', data);
@@ -85,7 +86,7 @@ export class BannerEditorComponent implements OnInit {
         }
       },
       error => {
-        console.log('error',error);
+        console.log('error', error);
         this.error = error.error.Message;
       });
   }

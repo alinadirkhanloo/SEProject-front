@@ -56,18 +56,23 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
+    console.log('ff', this.f.Username.value, this.f.Password.value);
     this.authenticationService.login(this.f.Username.value, this.f.Password.value)
       .pipe(first())
       .subscribe(
         data => {
           this.sharedData.setLoggedIn(true);
           this.showSpinner = '';
-          this.api.getUserInfo().subscribe(res => {
-            console.log('ff',res);
-            localStorage.setItem('currentUser', JSON.stringify(res.data));
-            this.sharedData.setUserId(res.data.id);
-            console.log('current user', localStorage.getItem('currentUser'));
-          });
+          try {
+            this.api.getUserInfo().subscribe(res => {
+              console.log('ff', res);
+              localStorage.setItem('currentUser', JSON.stringify(res.data));
+              this.sharedData.setUserId(res.data.id);
+              console.log('current user', localStorage.getItem('currentUser'));
+            });
+          } catch (Error) {
+            alert(Error.message);
+          }
           this.router.navigate([this.returnUrl]);
         },
         error => {
