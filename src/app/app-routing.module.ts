@@ -14,37 +14,24 @@ import { AuthGuard } from './helpers/auth.guard';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { SearchComponent } from './pages/search/search.component';
 import { CommentsComponent } from './pages/comments/comments.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 // canLoad: [RandomGuard]
-// const routes: Routes = [
-// {path:'',component:AdminPanelComponent},
-// {path:'login',component:LoginComponent},
-// {path:'banner-panel',component:BannerPanelComponent,canActivate: [AuthGuard]},
-// {path:'banners',component:BannersComponent},
-// {path:'home',component:HomeComponent},
-// {path:'blogs/:category',component:BlogsComponent},
-// {path:'category',component:CategoryComponent},
-// {path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
-// {path:'editor',component:EditorComponent ,canActivate: [AuthGuard]},
-// {path:'blog',component:BlogComponent,canActivate: [AuthGuard]},
-// {path:'register',component:RegisterComponent},
-// ];
-
 const routes: Routes = [
-{path:'',component:AdminPanelComponent},
+{path:'admin',component:AdminPanelComponent,canActivate: [AuthGuard]},
 {path:'login',component:LoginComponent},
-{path:'banner-panel',component:BannerPanelComponent},
+{path:'banner-panel',component:BannerPanelComponent,canActivate: [AuthGuard]},
 {path:'banners',component:BannersComponent},
 {path:'home',component:HomeComponent},
 {path:'blogs/:category',component:BlogsComponent},
 {path:'category',component:CategoryComponent},
-{path:'profile',component:ProfileComponent},
-{path:'editor',component:EditorComponent },
-{path:'blog',component:BlogComponent},
+{path:'profile',component:ProfileComponent,canActivate: [AuthGuard]},
+{path:'editor',component:EditorComponent ,canActivate: [AuthGuard]},
+{path:'blog',component:BlogComponent,canActivate: [AuthGuard]},
 {path:'register',component:RegisterComponent},
 {path:'search',component:SearchComponent},
-{path:'comments',component:CommentsComponent},
-
+{path:'comments',component:CommentsComponent,canActivate: [AuthGuard]},
+{path:'**',component:ErrorComponent},
 ];
 
 @NgModule({

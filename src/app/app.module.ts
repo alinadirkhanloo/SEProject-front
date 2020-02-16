@@ -74,6 +74,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { SearchComponent } from './pages/search/search.component';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { FollowingProfComponent } from './pages/profile/following-prof/following-prof.component';
+import { ErrorComponent } from './pages/error/error.component';
 // import { HttpClientModule} from '@angular/common/http';
 // import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -97,7 +98,8 @@ import { FollowingProfComponent } from './pages/profile/following-prof/following
     AdminPanelComponent,
     SearchComponent,
     CommentsComponent,
-    FollowingProfComponent
+    FollowingProfComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

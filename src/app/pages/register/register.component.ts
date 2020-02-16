@@ -49,6 +49,7 @@ export class RegisterComponent implements OnInit {
     this.showSpinner = 'block';
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      this.showSpinner = '';
       return;
     }
     this.user = this.registerForm.value;
