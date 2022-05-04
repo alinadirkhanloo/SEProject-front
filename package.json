@@ -62,7 +62,7 @@
     "typescript": "~3.5.3"
   },
   "optionalDependencies": {
-    "angular": "^1.7.9",
+    "angular": "^1.8.3",
     "angular-animate": "^1.7.9",
     "angular-aria": "^1.7.9",
     "angular-messages": "^1.7.9",
